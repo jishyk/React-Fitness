@@ -15,18 +15,14 @@ const userSchema = new Schema({
     required: true,
     unique: true
   },
-  exercises: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Exercise'
-  }],
-  goals: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Goal'
-  }]
-}, {
-  toJSON: {
-    getters: true
-  }
+  goalExercise: {
+    type: Number,
+    required: true
+  },
+  goalNutrition: {
+    type: Number,
+    required: true
+  },
 });
 
 const User = model('user', userSchema);
