@@ -1,15 +1,80 @@
 nav {
     background-color: #333;
-    overflow: hidden;
-    flex:auto;
-    color: white
+    color: white;
+    float: right;
+    margin-right: 100px;
 }
 
 nav a {
-    display: inline-block;
-    color: white;
-    text-align: center;
+    /* display: inline-block; */
+    /* color: white; */
+    /* text-align: center;
     padding: 14px 16px;
-    text-decoration: none;
+    text-decoration: none; */
 }
 
+.dropDown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+  
+.dropDownContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 5px 5px;
+    z-index: 1;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button-section {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-button,
+.login-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.signup-button {
+    background-color: #4caf50;
+}
+
+.login-button {
+    background-color: #3498db;
+}
+
+.signup-button:hover,
+.login-button:hover {
+    background-color: #45a049;
+}
+.dropDown.active .dropDownContent {
+    display: block;
+    text-align: left;
+    list-style: circle;
+    color: black
+}

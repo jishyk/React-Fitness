@@ -1,39 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../css/app.css";
 
-const isActive = (path) => {
-    const currentPath = useLocation().pathname;
-    return currentPath === path ? "nav-link active" : "nav-link";
-}
+const AddNav = () => {
+    const location = useLocation();
+    const [showDropDown, setShowDropDown] = useState(false);
 
-function AddNav() {
+    const isActive = (path) => {
+        return location.pathname === path ? "nav-link active" : "nav-link";
+    };
+
+    const handleDropDownClick = () => {
+        setShowDropDown(!showDropDown);
+    };
+
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/" className={isActive('/')}>
-                        Home
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/addWork" className={isActive('/addWork')}>
-                        Add Workout
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/addNutrition" className={isActive('/addNutrtion')}>
-                        Add Nutrition
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/addGoal" className={isActive('/addGoal')}>
-                        Add Goal
-                    </Link>
-                </li>
-            </ul>
+        <nav className={`dropDown ${showDropDown ? 'active' : ''}`} onClick={handleDropDownClick}>
+            <span>DROPDOWN</span>
+            {showDropDown && (
+                <div className="dropDownContent">
+                    <ul>
+                        <li>
+                            <Link to="/AddWork" className={isActive('/AddWork')}>
+                                Add Workout
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/AddNutrition" className={isActive('/AddNutrition')}>
+                                Add Nutrition
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/AddGoal" className={isActive('/AddGoal')}>
+                                Add Goal
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            )}
         </nav>
     );
 }
 
-export default AddNav
+export default AddNav;
