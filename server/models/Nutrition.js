@@ -15,22 +15,18 @@ const nutritionSchema = new Schema({
   },
   protein: {
     type: Number,
-    required: true
+    required: false
   },
   carbs: {
     type: Number,
-    required: true
+    required: false
   },
   fats: {
     type: Number,
-    required: true
-  }
-}, {
-  toJSON: {
-    getters: true
+    required: false
   }
 });
 
-const Nutrition = model('nutrition', nutritionSchema);
+const Nutrition = model('Nutrition', nutritionSchema);
 
 module.exports = Nutrition;
