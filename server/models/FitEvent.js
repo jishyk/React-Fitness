@@ -29,8 +29,12 @@ const fitEventSchema = new Schema({
     }, 
     nutritionId: {
         type: Schema.Types.ObjectId,
-        ref: 'Exercise',
+        ref: 'Nutrition',
     }, 
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
 
 });
 
