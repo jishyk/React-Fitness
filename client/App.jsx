@@ -2,6 +2,8 @@
 // Important for API Consumption: To enable interaction with our GraphQL API on the front end, we utilize these tools to develop the client-side behavior
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Outlet } from 'react-router-dom';
+import '../client/src/css/app.css';
+import AddNav from './src/components/Nav';
 
 // import once created -abel
 // import Header from './components/Header';
@@ -21,6 +23,7 @@ function App() {
       <div className="flex-column justify-flex-start min-100-vh">
         {/* can add once header is created, or different component. -abel */}
         {/* <Header /> */}
+        <AddNav></AddNav>
         <div className="container">
           <Outlet />
         </div>
