@@ -1,11 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const nutritionSchema = new Schema({
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: (value) => dateFormat(value)
-  },
+  nutritionId: {
+    type: Schema.Types.ObjectId,
+    default: () => new Types.ObjectId(),
+},
   name: {
     type: String,
     required: true
@@ -32,6 +31,6 @@ const nutritionSchema = new Schema({
   }
 });
 
-const Nutrition = model('Nutrition', nutritionSchema);
+const Nutrition = model('nutrition', nutritionSchema);
 
 module.exports = Nutrition;

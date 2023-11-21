@@ -9,6 +9,7 @@ const fitEventSchema = new Schema({
             return formattedTime;
         }
     },
+    // At this point the fitEvent will have two possible values: 'nutrition' or 'exercise'. Decided to go with a string instead of a boolean in case we want to add more types later.
     fitEventType: {
         type: String,
         required: true,
