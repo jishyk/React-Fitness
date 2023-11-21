@@ -25,6 +25,8 @@ const userSchema = new Schema({
   },
 });
 
+// Do we need to have a password field? -abel
+
 const User = model('User', userSchema);
 
 module.exports = User;

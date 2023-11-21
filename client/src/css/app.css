@@ -5,14 +5,6 @@ nav {
     margin-right: 100px;
 }
 
-nav a {
-    /* display: inline-block; */
-    /* color: white; */
-    /* text-align: center;
-    padding: 14px 16px;
-    text-decoration: none; */
-}
-
 .dropDown {
     position: relative;
     display: inline-block;
