@@ -29,10 +29,52 @@ nav a {
     z-index: 1;
 }
 
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button-section {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-button,
+.login-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.signup-button {
+    background-color: #4caf50;
+}
+
+.login-button {
+    background-color: #3498db;
+}
+
+.signup-button:hover,
+.login-button:hover {
+    background-color: #45a049;
+}
 .dropDown.active .dropDownContent {
     display: block;
     text-align: left;
     list-style: circle;
     color: black
 }
-  
