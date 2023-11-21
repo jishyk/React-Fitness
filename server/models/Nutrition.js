@@ -15,15 +15,15 @@ const nutritionSchema = new Schema({
   },
   protein: {
     type: Number,
-    required: true
+    required: false
   },
   carbs: {
     type: Number,
-    required: true
+    required: false
   },
   fats: {
     type: Number,
-    required: true
+    required: false
   }
 });
 

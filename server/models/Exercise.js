@@ -14,14 +14,14 @@ const exerciseSchema = new Schema({
     },
     exercise: {
         type: String,
-        required: true,
+        required: false,
         minLength: 1,
         maxLength: 280,
         trim: true
     },
     length: {
         type: String,
-        required: true,
+        required: false,
         minLength: 1,
         maxLength: 280,
         trim: true
@@ -32,7 +32,7 @@ const exerciseSchema = new Schema({
     },
     feeling: {
         type: String,
-        required: true,
+        required: false,
         minLength: 1,
         maxLength: 280,
         trim: true
