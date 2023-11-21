@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
 
 const fitEventSchema = new Schema({
     createdAt: {
@@ -14,7 +13,6 @@ const fitEventSchema = new Schema({
         type: String,
         required: true,
     },
-    
     goalReachedExercise: {
         type: Boolean,
         required: true,
@@ -31,7 +29,6 @@ const fitEventSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Exercise',
     }, 
-
 });
 
 const FitEvent = model('fitEvent', fitEventSchema);
