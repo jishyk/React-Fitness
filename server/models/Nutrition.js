@@ -27,6 +27,6 @@ const nutritionSchema = new Schema({
   }
 });
 
-const Nutrition = model('nutrition', nutritionSchema);
+const Nutrition = model('Nutrition', nutritionSchema);
 
 module.exports = Nutrition;

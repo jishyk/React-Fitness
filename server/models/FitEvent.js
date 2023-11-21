@@ -37,6 +37,6 @@ const fitEventSchema = new Schema({
 
 });
 
-const FitEvent = model('fitEvent', fitEventSchema);
+const FitEvent = model('FitEvent', fitEventSchema);
 
 module.exports = FitEvent;

@@ -39,6 +39,6 @@ const exerciseSchema = new Schema({
     },
 })
 
-const Exercise = model('exercise', exerciseSchema);
+const Exercise = model('Exercise', exerciseSchema);
 
 module.exports = Exercise;
