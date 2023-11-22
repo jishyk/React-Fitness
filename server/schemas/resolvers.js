@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, FitEvent, Exercise, Nutrition } = require('../models');
 
 const resolvers = {
     Query: {

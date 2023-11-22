@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types, model } = require('mongoose');
 
 const userSchema = new Schema({
   userId: {
@@ -17,11 +17,11 @@ const userSchema = new Schema({
   },
   goalExercise: {
     type: Number,
-    required: true
+    required: false
   },
   goalNutrition: {
     type: Number,
-    required: true
+    required: false
   },
 });
 
