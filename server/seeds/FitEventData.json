@@ -1,0 +1,19 @@
+[
+    {
+      "fitEventType": "Cardio Session",
+      "goalReachedExercise": true,
+      "goalReachedNutrition": false,
+      "exerciseId": "655d7c21afe63be45a94c25d",
+      "nutritionId": "655d817e0e2a418ea3854c83"
+    },
+  
+  {
+    "fitEventType": "Strength Training",
+    "goalReachedExercise": true,
+    "goalReachedNutrition": true,
+    "exerciseId": "655d81c5195848d464b204b0",
+    "nutritionId": "655d81c5195848d464b204b8"
+  }
+]
+
+
