@@ -37,13 +37,19 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
+    user(username: String!): User
     exercises: [Exercise]
-    nutrition: [Nutrition]
+    exercise(_id: ID!): Exercise
+    nutritions: [Nutrition]
+    nutrition(_id: ID!): Nutrition
     fitEvents: [FitEvent]
+    fitEvent(_id: ID!): FitEvent
+    me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!): User
+    login(email: String!, password: String!): User
     removeUser(userId: ID!): User
     updateUser(userId: ID!, username: String!, email: String!): User
     updateExerciseGoal(userId: ID!, goalExercise: Int! ): User
@@ -53,7 +59,7 @@ const typeDefs = gql`
     addExercise(name: String!, exercise: String!, length: String!, caloriesBurned: Int!, feeling: String!): Exercise
     addNutrition(name: String!, calories: Int!): Nutrition
     addFitEvent(fitEventType: String!, goalReachedExercise: Boolean!, goalReachedNutrition: Boolean!, exerciseId: ID!, nutritionId: ID!, userId: ID!): FitEvent
-    updateFitEvent(_id: ID!, fitEventType: String!, goalReachedExercise: Boolean!, goalReachedNutrition: Boolean!, exerciseId: ID!, nutritionId: ID!, userId: ID!): FitEvent
+    updatedFitEvent(_id: ID!, fitEventType: String!, goalReachedExercise: Boolean!, goalReachedNutrition: Boolean!, exerciseId: ID!, nutritionId: ID!, userId: ID!): FitEvent
     removeFitEvent(_id: ID!): FitEvent
     updateExercise(_id: ID!, name: String!, exercise: String!, length: String!, caloriesBurned: Int!, feeling: String!): Exercise
     updateNutrition(_id: ID!, name: String!, calories: Int!): Nutrition
