@@ -78,19 +78,19 @@ const resolvers = {
         // goal mutations
         updateExerciseGoal: async (parent, { goalExercise }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate({ _id: user._id }, {$set: { goalExercise } }, { new: true });
+            return User.findOneAndUpdate({ _id: context.user._id }, {$set: { goalExercise } }, { new: true });
             }
             throw AuthenticationError;
         },
         updateNutritionGoal: async (parent, { goalNutrition }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate({ _id: user._id }, {$set: { goalNutrition } }, { new: true });
+            return User.findOneAndUpdate({ _id: context.user._id }, {$set: { goalNutrition } }, { new: true });
             }
             throw AuthenticationError;
         },
         removeExerciseGoal: async (parent, { goalExercise }, context) => {
             if (context.user) {
-            return User.findOneAndDelete({ _id: user._id }, 
+            return User.findOneAndDelete({ _id: context.user._id }, 
                 { $pull: { goalExercise: goalExercise } }, { new: true }
                 );
         }
@@ -98,7 +98,7 @@ const resolvers = {
         },
         removeNutritionGoal: async (parent, { goalNutrition }, context) => {
             if (context.user) {
-            return User.findOneAndDelete({ _id: userId },
+            return User.findOneAndDelete({ _id: context.userId },
                  {$pull: { goalNutrition: goalNutrition } }, 
                  { new: true });
         } 
