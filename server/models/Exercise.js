@@ -4,6 +4,7 @@ const exerciseSchema = new Schema({
     exerciseId: {
         type: Schema.Types.ObjectId,
         default: () => new Types.ObjectId(),
+        ref: 'Exercise',
     },
     name: {
         type: String,

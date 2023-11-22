@@ -1,0 +1,15 @@
+[
+    {
+      "username": "fitnessenthusiast",
+      "email": "enthusiast@example.com",
+      "exercises": ["655d7c21afe63be45a94c25d"],
+      "password": "123456"
+    },
+    {
+      "username": "workoutwarrior",
+      "email": "warrior@example.com",
+      "exercises": ["655d81c5195848d464b204b0"],
+      "password": "123456"
+    }
+  ]
+  

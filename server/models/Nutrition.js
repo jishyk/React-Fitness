@@ -4,6 +4,7 @@ const nutritionSchema = new Schema({
   nutritionId: {
     type: Schema.Types.ObjectId,
     default: () => new Types.ObjectId(),
+    ref: 'Nutrition',
 },
   name: {
     type: String,
