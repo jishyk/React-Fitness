@@ -1,13 +1,10 @@
-const { Schema, model, } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 const fitEventSchema = new Schema({
-    createdAt: {
-        type: Date,
-        default: Date.now(),
-        get: function (value) {
-            const formattedTime = value.toLocaleTimeString();
-            return formattedTime;
-        }
+    fitEventId: {
+        type: Schema.Types.ObjectId,
+        default: () => new Types.ObjectId(),
+        ref: 'FitEvent',
     },
     // At this point the fitEvent will have two possible values: 'nutrition' or 'exercise'. Decided to go with a string instead of a boolean in case we want to add more types later.
     fitEventType: {
