@@ -10,7 +10,7 @@ const resolvers = {
             return User.find();
         },
         user: async (parent, { username }) => {
-            return User.findOne( { username });
+            return User.findOne( { username }, {new: true});
         },
         fitEvent: async (parent, { _id }) => {
             return FitEvent.findOne({ _id });
@@ -32,14 +32,14 @@ const resolvers = {
         },
         me: async (parent, args, context) => {
             if (context.user) {
-                return User.findOne({ _id: user._id });
-            } throw new AuthenticationError('You need to be logged in!');
+                return User.findOne({ _id: context.user._id });
+            } throw AuthenticationError;
         }
     },
     Mutation: {
         // user mutations
-        addUser: async (parent, { username, email }) => {
-            const user = await User.create({ username, email });
+        addUser: async (parent, { username, email, password }) => {
+            const user = await User.create({ username, email, password });
             const token = signToken(user);
             return { token, user };
         },
@@ -57,34 +57,36 @@ const resolvers = {
             }
       
             const token = signToken(user);
+            console.log(token);
+            console.log(user)
             return { token, user };
         },
         removeUser: async (parent, args, context) => {
             if (context.user) {
-                return User.findOneAndDelete({ _id: user._id });
+                return User.findOneAndDelete({ _id: context.user._id });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         },
         updateUser: async (parent, {username, email, password}, context) => {
             if (context.user) {
-                return User.findOneAndUpdate({ _id: user._id }, 
+                return User.findOneAndUpdate({ _id: context.user._id }, 
                     {$set: {username, email, password} }, 
                     { new: true });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         },
         // goal mutations
         updateExerciseGoal: async (parent, { goalExercise }, context) => {
             if (context.user) {
             return User.findOneAndUpdate({ _id: user._id }, {$set: { goalExercise } }, { new: true });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         },
         updateNutritionGoal: async (parent, { goalNutrition }, context) => {
             if (context.user) {
             return User.findOneAndUpdate({ _id: user._id }, {$set: { goalNutrition } }, { new: true });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         },
         removeExerciseGoal: async (parent, { goalExercise }, context) => {
             if (context.user) {
@@ -92,7 +94,7 @@ const resolvers = {
                 { $pull: { goalExercise: goalExercise } }, { new: true }
                 );
         }
-        throw new AuthenticationError('You need to be logged in!');
+        throw AuthenticationError;
         },
         removeNutritionGoal: async (parent, { goalNutrition }, context) => {
             if (context.user) {
@@ -100,70 +102,69 @@ const resolvers = {
                  {$pull: { goalNutrition: goalNutrition } }, 
                  { new: true });
         } 
-        throw new AuthenticationError('You need to be logged in!');
+        throw AuthenticationError;
         },
         // fitEvent mutations
         addFitEvent: async (parent, { fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId }, context) => {
             if (context.user) {
                 return FitEvent.create({ fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         },
-        updatedFitEvent: async (parent, { _id, fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId }) => {
+        updatedFitEvent: async (parent, { _id, fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId }, context) => {
             if (context.user) {
                 return FitEvent.findOneAndUpdate(
                     { _id }, 
                     { $set: { fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId }}, 
                     { new: true });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         },
-        removeFitEvent: async (parent, { _id }) => {
+        removeFitEvent: async (parent, { _id }, context) => {
             if (context.user) {
                 return FitEvent.findOneAndDelete({ _id });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         },
         // exercise mutations
         addExercise: async (parent, { name, exercise, length, caloriesBurned, feeling }, context) => {
             if(context.user){
                 return Exercise.create({ name, exercise, length, caloriesBurned, feeling });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         },
-        removeExercise: async (parent, { _id }) => {
+        removeExercise: async (parent, { _id }, context) => {
             if (context.user) {
                 return Exercise.findOneAndDelete({ _id });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         },
         updateExercise: async (parent, { _id, name, exercise, length, caloriesBurned, feeling }, context) => {
             if (context.user) {
                 return Exercise.findOneAndUpdate({ _id }, {$set: { name, exercise, length, caloriesBurned, feeling } }, { new: true });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         },
         // nutrition mutations
         addNutrition: async (parent, { name, calories }, context) => {
             if (context.user) {
                 return Nutrition.create({ name, calories });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         },
         removeNutrition: async (parent, { _id }, context) => {
             if (context.user) {
                 return Nutrition.findOneAndDelete({ _id });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         },
         updateNutrition: async (parent, { _id, name }, context) => {
             if (context.user) {
                 return Nutrition.findOneAndUpdate({ _id }, {$set: { name } }, { new: true });
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw AuthenticationError;
         }
     }
-
 };
 
 module.exports = resolvers;
