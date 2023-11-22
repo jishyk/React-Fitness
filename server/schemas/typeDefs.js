@@ -14,7 +14,7 @@ const typeDefs = gql`
     name: String
     exercise: String
     length: String
-    calroiesBurned: Int
+    caloriesBurned: Int
     feeling: String
   }
 
