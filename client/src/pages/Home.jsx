@@ -20,13 +20,13 @@ export default function Home() {
       <div className="signup-box">
         <h2>Sign Up</h2>
         <form>
-          <div classsName="form-group">
-            <label htmlFor="emailOrPhone">Email or Phone Number:</label>
-            <input type="text" id="emailOrPhone" name="emailOrPhone" />
+          <div className="form-group">
+            <label htmlFor="emailOrPhone"></label>
+            <input type="text" id="emailOrPhone" name="emailOrPhone" placeholder="Enter Email or Phone #" />
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" name="password" />
+            <label htmlFor="password"></label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" />
           </div>
           <div className="form-group">
             <button type="submit" className="login-button">Login</button>

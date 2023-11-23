@@ -1,9 +1,12 @@
 // import './App.css';
 // Important for API Consumption: To enable interaction with our GraphQL API on the front end, we utilize these tools to develop the client-side behavior
+import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { Outlet } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import '../client/src/css/app.css';
 import AddNav from './src/components/Nav';
+import Home from './src/pages/Home';
+import CreateAccount from './src/pages/CreateAccount';
 
 // import once created -abel
 // import Header from './components/Header';
@@ -25,7 +28,10 @@ function App() {
         {/* <Header /> */}
         <AddNav />
         <div className="container">
-          <Outlet />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/create-account" element={<CreateAccount />} />
+          </Routes>
         </div>
         {/* can add once footer is created -abel */}
         {/* <Footer />  */}
