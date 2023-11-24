@@ -5,6 +5,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Route, Routes } from 'react-router-dom';
 import '../client/src/css/app.css';
 import AddNav from './src/components/Nav';
+import { Outlet } from 'react-router-dom';
 import Home from './src/pages/Home';
 import CreateAccount from './src/pages/CreateAccount';
 
@@ -28,10 +29,7 @@ function App() {
         {/* <Header /> */}
         <AddNav />
         <div className="container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/create-account" element={<CreateAccount />} />
-          </Routes>
+          <Outlet />
         </div>
         {/* can add once footer is created -abel */}
         {/* <Footer />  */}
