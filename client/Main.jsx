@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        // need to change to login page later once set 
+        // 'pseudo-URL for the createAccount page'
         path: '/create-account',
         element: <CreateAccount />,
       },
