@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/app.css";
+import Login from "../components/Login";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
       </div>
       <div className="signup-box">
         <h2>Sign Up</h2>
-        <form>
+        {/* <form>
           <div className="form-group">
             <label htmlFor="emailOrPhone"></label>
             <input type="text" id="emailOrPhone" name="emailOrPhone" placeholder="Enter Email or Phone #" />
@@ -31,7 +32,8 @@ export default function Home() {
           <div className="form-group">
             <button type="submit" className="login-button">Login</button>
           </div>
-        </form>
+        </form> */}
+        <Login />
         <div className="form-group">
           <Link to="/create-account" className="signup-button">Create New Account</Link>
         </div>

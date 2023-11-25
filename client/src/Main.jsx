@@ -10,6 +10,7 @@ import AddWork from './pages/AddWork.jsx';
 import AddNutrition from './pages/AddNutrition.jsx';
 import AddGoal from './pages/AddGoal.jsx';
 import Journal from './pages/Journal.jsx';
+import Dashboard from './pages/Dashboard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
         path: '/journal',
         element: <Journal />,
       },
+      {
+        path: '/dashboard',
+        element: <Dashboard />,
+      }
     //   {
     //     path: 'home',
     //     element: <Home />,

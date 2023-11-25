@@ -33,7 +33,7 @@ class AuthService {
     // Store a given JWT token to local storage and redirect the user to the root URL. This function is used in the login submit process to store the token returned from the LOGIN_USER mutation.
     login(idToken) {
         localStorage.setItem('id_token', idToken);
-        window.location.assign('/');
+        window.location.assign('/dashboard');
     }
 
     // Remove the JWT token from local storage and reload the page.

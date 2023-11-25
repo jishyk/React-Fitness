@@ -1,7 +1,8 @@
 // import './App.css';
 // Important for API Consumption: To enable interaction with our GraphQL API on the front end, we utilize these tools to develop the client-side behavior
 import React from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { Route, Routes } from 'react-router-dom';
 import './css/app.css';
 import AddNav from './components/Nav';
@@ -11,10 +12,27 @@ import { Outlet } from 'react-router-dom';
 // import Header from './components/Header';
 // import Footer from './components/Footer';
 
-// Important for API Consumption: Create an instance of the ApolloClient class and specify the endpoint of your GraphQL API (e.g., 'http://localhost:3001')—the proxy set up in the previous activity facilitates this. 
-// We also instantiate a new InMemoryCache class that automatically caches queried data, enhancing performance.
-const client = new ApolloClient({
+// Construct our main GraphQL API endpoint
+const httpLink = createHttpLink({
   uri: '/graphql',
+});
+
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
