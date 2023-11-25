@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx'
 import Error from './pages/Error.jsx'
 import CreateAccount from './pages/CreateAccount.jsx';
 import AddWork from './pages/AddWork.jsx';
+import Journal from './pages/Journal.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: '/add-work',
         element: <AddWork />,
+      },
+      {
+        path: '/journal',
+        element: <Journal />,
       },
     //   {
     //     path: 'home',
