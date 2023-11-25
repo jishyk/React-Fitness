@@ -21,7 +21,7 @@ const AddNav = () => {
                 <div className="dropDownContent">
                     <ul>
                         <li>
-                            <Link to="/AddWork" className={isActive('/AddWork')}>
+                            <Link to="/add-work" className={isActive('/AddWork')}>
                                 Add Workout
                             </Link>
                         </li>

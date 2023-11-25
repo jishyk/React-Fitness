@@ -6,6 +6,7 @@ import App from './App.jsx'
 import Home from './pages/Home.jsx'
 import Error from './pages/Error.jsx'
 import CreateAccount from './pages/CreateAccount.jsx';
+import AddWork from './pages/AddWork.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         // 'pseudo-URL for the createAccount page'
         path: '/create-account',
         element: <CreateAccount />,
+      },
+      {
+        path: '/add-work',
+        element: <AddWork />,
       },
     //   {
     //     path: 'home',
