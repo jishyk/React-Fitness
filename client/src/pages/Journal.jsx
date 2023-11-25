@@ -27,6 +27,12 @@ console.log(fitEvents);
                 fitEvents.map((fitEvent) => (
                     <div key={fitEvent._id} className="card mb-3">
                        <h4>{fitEvent.fitEventType}</h4>
+                       <h4>{fitEvent.createdAt}</h4>
+                       <h4>{fitEvent.fitEventType}</h4>
+                       {/* <h4>{fitEvent.exerciseId.name}</h4> */}
+                       {/* <h4>{fitEvent.exerciseId.caloriesBurned}</h4> */}
+                       <h4>{fitEvent.nutritionId.name}</h4>
+                       <h4>{fitEvent.nutritionId.calories}</h4>  
                        </div>
                 
                 ))}
@@ -38,11 +44,3 @@ export default Journal;
 
 
 
-// <div key={fitEvent._id} className="card mb-3">
-//                        <h4>{fitEvent.createdAt}</h4>
-//                        <h4>{fitEvent.fitEventType}</h4>
-//                        <h4>{fitEvent.exerciseId.name}</h4>
-//                        <h4>{fitEvent.exerciseId.caloriesBurned}</h4>
-//                        <h4>{fitEvent.nutritionId.name}</h4>
-//                        <h4>{fitEvent.nutritionId.calories}</h4>  
-//                        </div>

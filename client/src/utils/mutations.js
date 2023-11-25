@@ -124,8 +124,8 @@ export const ADD_FITEVENT = gql`
         $fitEventType: String!
         $goalReachedExercise: Boolean!
         $goalReachedNutrition: Boolean!
-        $exerciseId: ID!
-        $nutritionId: ID!
+        $exerciseId: ID
+        $nutritionId: ID
         $userId: ID!
         ) {
             addFitEvent(
