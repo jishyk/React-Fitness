@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_FITEVENTS } from '../utils/queries';
 
 const Journal = () => {
-    const { loading, data } = useQuery(QUERY_FITEVENTS);   
+    const { loading, data, error } = useQuery(QUERY_FITEVENTS);   
+    
+    useEffect(() => {
+        console.log(data);
+      }, [data]);
+
+    if (loading) {
+        return <h3>Loading...</h3>;
+      }
+
     const fitEvents = data?.fitEvents || [];
 
     if (!fitEvents.length) {
