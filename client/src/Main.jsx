@@ -7,6 +7,8 @@ import Home from './pages/Home.jsx'
 import Error from './pages/Error.jsx'
 import CreateAccount from './pages/CreateAccount.jsx';
 import AddWork from './pages/AddWork.jsx';
+import AddNutrition from './pages/AddNutrition.jsx';
+import AddGoal from './pages/AddGoal.jsx';
 import Journal from './pages/Journal.jsx';
 
 const router = createBrowserRouter([
@@ -30,12 +32,17 @@ const router = createBrowserRouter([
         element: <AddWork />,
       },
       {
+        path: '/add-goal',
+        element: <AddGoal />
+      },
+      {
+        path:'/add-nutrition',
+        element: <AddNutrition />,
+      },
+      {
         path: '/journal',
         element: <Journal />,
       },
-        path:'/add-nutrition',
-        element: <AddNutrition />,
-      }
     //   {
     //     path: 'home',
     //     element: <Home />,

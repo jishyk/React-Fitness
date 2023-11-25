@@ -26,7 +26,7 @@ const AddNav = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/AddNutrition" className={isActive('/AddNutrition')}>
+                            <Link to="/add-nutrition" className={isActive('/AddNutrition')}>
                                 Add Nutrition
                             </Link>
                         </li>
