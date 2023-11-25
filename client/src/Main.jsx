@@ -7,7 +7,7 @@ import Home from './pages/Home.jsx'
 import Error from './pages/Error.jsx'
 import CreateAccount from './pages/CreateAccount.jsx';
 import AddWork from './pages/AddWork.jsx';
-import AddGoal from './pages/AddGoal.jsx';
+import AddNutrition from './pages/AddNutrition.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,9 +30,9 @@ const router = createBrowserRouter([
         element: <AddWork />,
       },
       {
-        path: '/add-goal',
-        element: <AddGoal />
-      },
+        path:'/add-nutrition',
+        element: <AddNutrition />,
+      }
     //   {
     //     path: 'home',
     //     element: <Home />,
