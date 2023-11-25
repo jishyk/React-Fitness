@@ -10,7 +10,7 @@ const resolvers = {
             return User.find();
         },
         user: async (parent, { username }) => {
-            return User.findOne( { username }, {new: true});
+            return User.findOne({ username }, { new: true });
         },
         fitEvent: async (parent, { _id }) => {
             return FitEvent.findOne({ _id });
@@ -45,17 +45,17 @@ const resolvers = {
         },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
-      
+
             if (!user) {
-              throw AuthenticationError;
+                throw AuthenticationError;
             }
-      
+
             const correctPw = await user.isCorrectPassword(password);
-      
+
             if (!correctPw) {
-              throw AuthenticationError;
+                throw AuthenticationError;
             }
-      
+
             const token = signToken(user);
             console.log(token);
             console.log(user)
@@ -67,10 +67,10 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
-        updateUser: async (parent, {username, email, password}, context) => {
+        updateUser: async (parent, { username, email, password }, context) => {
             if (context.user) {
-                return User.findOneAndUpdate({ _id: context.user._id }, 
-                    {$set: {username, email, password} }, 
+                return User.findOneAndUpdate({ _id: context.user._id },
+                    { $set: { username, email, password } },
                     { new: true });
             }
             throw AuthenticationError;
@@ -78,31 +78,31 @@ const resolvers = {
         // goal mutations
         updateExerciseGoal: async (parent, { goalExercise }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate({ _id: context.user._id }, {$set: { goalExercise } }, { new: true });
+                return User.findOneAndUpdate({ _id: context.user._id }, { $set: { goalExercise } }, { new: true });
             }
             throw AuthenticationError;
         },
         updateNutritionGoal: async (parent, { goalNutrition }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate({ _id: context.user._id }, {$set: { goalNutrition } }, { new: true });
+                return User.findOneAndUpdate({ _id: context.user._id }, { $set: { goalNutrition } }, { new: true });
             }
             throw AuthenticationError;
         },
         removeExerciseGoal: async (parent, { goalExercise }, context) => {
             if (context.user) {
-            return User.findOneAndDelete({ _id: context.user._id }, 
-                { $pull: { goalExercise: goalExercise } }, { new: true }
+                return User.findOneAndDelete({ _id: context.user._id },
+                    { $pull: { goalExercise: goalExercise } }, { new: true }
                 );
-        }
-        throw AuthenticationError;
+            }
+            throw AuthenticationError;
         },
         removeNutritionGoal: async (parent, { goalNutrition }, context) => {
             if (context.user) {
-            return User.findOneAndDelete({ _id: context.userId },
-                 {$pull: { goalNutrition: goalNutrition } }, 
-                 { new: true });
-        } 
-        throw AuthenticationError;
+                return User.findOneAndDelete({ _id: context.userId },
+                    { $pull: { goalNutrition: goalNutrition } },
+                    { new: true });
+            }
+            throw AuthenticationError;
         },
         // fitEvent mutations
         addFitEvent: async (parent, { fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId }, context) => {
@@ -114,8 +114,8 @@ const resolvers = {
         updatedFitEvent: async (parent, { _id, fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId }, context) => {
             if (context.user) {
                 return FitEvent.findOneAndUpdate(
-                    { _id }, 
-                    { $set: { fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId }}, 
+                    { _id },
+                    { $set: { fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId } },
                     { new: true });
             }
             throw AuthenticationError;
@@ -128,7 +128,7 @@ const resolvers = {
         },
         // exercise mutations
         addExercise: async (parent, { name, exercise, length, caloriesBurned, feeling }, context) => {
-            if(context.user){
+            if (context.user) {
                 return Exercise.create({ name, exercise, length, caloriesBurned, feeling });
             }
             throw AuthenticationError;
@@ -141,7 +141,7 @@ const resolvers = {
         },
         updateExercise: async (parent, { _id, name, exercise, length, caloriesBurned, feeling }, context) => {
             if (context.user) {
-                return Exercise.findOneAndUpdate({ _id }, {$set: { name, exercise, length, caloriesBurned, feeling } }, { new: true });
+                return Exercise.findOneAndUpdate({ _id }, { $set: { name, exercise, length, caloriesBurned, feeling } }, { new: true });
             }
             throw AuthenticationError;
         },
@@ -160,7 +160,7 @@ const resolvers = {
         },
         updateNutrition: async (parent, { _id, name }, context) => {
             if (context.user) {
-                return Nutrition.findOneAndUpdate({ _id }, {$set: { name } }, { new: true });
+                return Nutrition.findOneAndUpdate({ _id }, { $set: { name } }, { new: true });
             }
             throw AuthenticationError;
         }
