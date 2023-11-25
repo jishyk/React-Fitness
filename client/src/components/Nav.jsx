@@ -31,7 +31,7 @@ const AddNav = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/AddGoal" className={isActive('/AddGoal')}>
+                            <Link to="/add-goal" className={isActive('/AddGoal')}>
                                 Add Goal
                             </Link>
                         </li>
