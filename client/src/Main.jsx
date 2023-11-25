@@ -9,6 +9,7 @@ import CreateAccount from './pages/CreateAccount.jsx';
 import AddWork from './pages/AddWork.jsx';
 import AddNutrition from './pages/AddNutrition.jsx';
 import AddGoal from './pages/AddGoal.jsx';
+import Journal from './pages/Journal.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
       {
         path:'/add-nutrition',
         element: <AddNutrition />,
-      }
+      },
+      {
+        path: '/journal',
+        element: <Journal />,
+      },
     //   {
     //     path: 'home',
     //     element: <Home />,

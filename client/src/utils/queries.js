@@ -96,7 +96,6 @@ export const QUERY_FITEVENTS = gql`
                 username
                 goalExercise
                 goalNutrition
-                }
             }
         }
     }
@@ -128,7 +127,6 @@ export const QUERY_FITEVENT = gql`
                 username
                 goalExercise
                 goalNutrition
-                }
             }
         }
     }
