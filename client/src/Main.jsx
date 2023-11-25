@@ -33,6 +33,9 @@ const router = createBrowserRouter([
         path: '/journal',
         element: <Journal />,
       },
+        path:'/add-nutrition',
+        element: <AddNutrition />,
+      }
     //   {
     //     path: 'home',
     //     element: <Home />,
