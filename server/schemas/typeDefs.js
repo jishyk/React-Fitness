@@ -6,8 +6,8 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    goalExercise: [Exercise]
-    goalNutrition: [Nutrition]
+    goalExercise: Int
+    goalNutrition: Int
   }
 
   type Exercise {
