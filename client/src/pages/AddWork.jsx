@@ -35,10 +35,7 @@ const AddWork = () => {
                 },
             });
             console.log("Exercise added successfully:", data);
-
-            const { token } = data.addExercise;
-            console.log(token);
-            Auth.login(token);
+            
         } catch (e) {
             console.error(e);
         }

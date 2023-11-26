@@ -42,7 +42,7 @@ const typeDefs = gql`
   }
 
   type ExerciseResponse {
-    token: ID!
+    token: ID
     exercise: Exercise
   }
 
