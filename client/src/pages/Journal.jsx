@@ -12,6 +12,7 @@ const styles = {
         height: '70%',
         width: '70%',
         marginLeft: 20,
+        marginBottom: 60,
         fontSize: 14,
         borderRadius: 8,
     },
@@ -90,6 +91,9 @@ const Journal = () => {
 
                     ))}
             </div>
+            <div className="form-group">
+                    <Link to="/dashboard" className="back-to-dashboard-button">Back to Dashboard</Link>
+                </div>
         </div>
     )
 };
