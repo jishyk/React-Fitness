@@ -31,7 +31,7 @@ const AddGoal = () => {
             });
             console.log("Goal added successfully:", data);
 
-            Auth.login(data.addExercise.token);
+            Auth.login(data.addAchievement.token);
         } catch (e) {
             console.error(e);
         }
