@@ -95,6 +95,7 @@ export const REMOVE_NUTRITION_GOAL = gql`
 export const ADD_EXERCISE = gql`
     mutation addExercise($name: String!, $exercise: String!, $length: String!, $caloriesBurned: Int!, $feeling: String!) {
         addExercise(name: $name, exercise: $exercise, length: $length, caloriesBurned: $caloriesBurned, feeling: $feeling) {
+            token
             exercise {
                 _id
                 name
