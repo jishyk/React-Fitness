@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../css/app.css";
+import AuthService from '../utils/auth';
 
 const AddNav = () => {
     const location = useLocation();
@@ -14,7 +15,9 @@ const AddNav = () => {
         setShowDropDown(!showDropDown);
     };
 
-    return (
+    const isLoggedIn = AuthService.loggedIn();
+
+    return isLoggedIn ? (
         <nav className={`dropDown ${showDropDown ? 'active' : ''}`} onClick={handleDropDownClick}>
             <span>DROPDOWN</span>
             {showDropDown && (
@@ -39,7 +42,7 @@ const AddNav = () => {
                 </div>
             )}
         </nav>
-    );
+    ) : null;
 }
 
 export default AddNav;

@@ -38,20 +38,38 @@ const Dashboard = () => {
     }
 
     const username = user.username;
-
+    const exercise = user.exercise;
+    const nutrition = user.nutrition;
+    const workoutGoal = user.goalExercise;
+    const nutritionGoal = user.goalNutrition;
 
     return (
-        <div> 
+        <div>
             {/* Checks to see if user is logged in using the auth.js in utils,
             if user is logged in, displays welcome message and logout button,
             if user not logged in, displays message. */}
             {AuthService.loggedIn() ? (
                 <div>
+                    <div className='dashHeader'>
                     <h1>Welcome {username}</h1>
                     <button className="btn btn-lg btn-light m-2" onClick={logout}>
                         Logout
                     </button>
+                    </div>
+                    <div className='dashSummary'>
+                        <h2>Your Day</h2>
+                        <ul>
+                            <li>Exercise: {exercise}</li>
+                            <li>Nutrition: {nutrition}</li>
+                            <li>Goals:
+                                {workoutGoal}
+                                {nutritionGoal}
+                            </li>
+                        </ul>
+
+                    </div>
                 </div>
+                
             ) : (
                 <h2>Sorry you must be logged in</h2>
             )}
