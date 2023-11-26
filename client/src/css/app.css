@@ -1,5 +1,5 @@
 body {
-    background-color: #e0f7fa;
+    background-color: #f0f0f0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -33,11 +33,19 @@ nav {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background-image: linear-gradient(to right, #d4af37 0%, #808080 100%);
+    animation: bgShift 7s ease infinite alternate;
+}
+
+@keyframes bgShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
 }
 
 .welcome-section {
     text-align: center;
     margin-bottom: 20px;
+    color: #333;
 }
 
 .button-section {
@@ -60,11 +68,11 @@ nav {
 }
 
 .signup-button {
-    background-color: #4caf50;
+    background-color: #d4af37;
 }
 
 .login-button {
-    background-color: #3498db;
+    background-color: #808080;
 }
 
 .signup-button:hover,
@@ -79,7 +87,7 @@ nav {
 }
 
 .signup-box {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.92);
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 8px;
