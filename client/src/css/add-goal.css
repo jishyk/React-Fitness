@@ -1,0 +1,83 @@
+.goal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+    background-image: linear-gradient(to right, #ffd700 0%, #ffd700 100%);
+    animation: bgShift 7s ease infinite alternate;
+}
+
+@keyframes bgShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.add-goal-box {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    max-width: 500px;
+    width: 100%;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.add-goal-box h2 {
+    color: #662d1c;
+    margin-bottom: 25px;
+    font-size: 2.3em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ff6b6b;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #ff8c8c;
+}
+
+.add-goal-button {
+    width: 100%;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+.add-goal-button:hover {
+    background-color: #ff7878;
+}
+
+.back-to-dashboard-button {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #ff6b6b;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.back-to-dashboard-button:hover {
+    color: #ff7878;
+    text-decoration: underline;
+}

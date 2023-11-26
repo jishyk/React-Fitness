@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../css/add-work.css";
+import "../css/add-goal.css";
 import { useState } from 'react';
 import { useMutation } from "@apollo/client";
 import { UPDATE_EXERCISE_GOAL } from '../utils/mutations';
