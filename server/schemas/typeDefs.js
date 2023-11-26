@@ -54,6 +54,7 @@ const typeDefs = gql`
     nutritions: [Nutrition]
     nutrition(_id: ID!): Nutrition
     fitEvents: [FitEvent]
+    todayFitEvents(_id: ID!): [FitEvent]
     fitEvent(_id: ID!): FitEvent
     me: User
   }
@@ -69,7 +70,7 @@ const typeDefs = gql`
     removeNutritionGoal(userId: ID!, goalNutrition: Int!): User
     addExercise(name: String!, exercise: String!, length: String!, caloriesBurned: Int!, feeling: String!): ExerciseResponse
     addNutrition(name: String!, calories: Int!): Nutrition
-    addFitEvent(fitEventType: String!, goalReachedExercise: Boolean!, goalReachedNutrition: Boolean!, exerciseId: ID!, nutritionId: ID!, userId: ID!): FitEvent
+    addFitEvent(fitEventType: String!, goalReachedExercise: Boolean!, goalReachedNutrition: Boolean!, exerciseId: ID, nutritionId: ID, userId: ID!): FitEvent
     updatedFitEvent(_id: ID!, fitEventType: String!, goalReachedExercise: Boolean!, goalReachedNutrition: Boolean!, exerciseId: ID!, nutritionId: ID!, userId: ID!): FitEvent
     removeFitEvent(_id: ID!): FitEvent
     updateExercise(_id: ID!, name: String!, exercise: String!, length: String!, caloriesBurned: Int!, feeling: String!): Exercise
