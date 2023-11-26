@@ -16,7 +16,7 @@ class AuthService {
     }
 
     // Check if the token is expired by comparing the exp key value (in seconds) to the Date.now() value (in milliseconds). If expired, remove the token from local storage and return true.
-    isTokenExpired() {
+    isTokenExpired(token) {
         const decoded = decode(token);
         if (decoded.exp < Date.now() / 1000) {
             localStorage.removeItem('id_token');
@@ -39,7 +39,7 @@ class AuthService {
     // Remove the JWT token from local storage and reload the page.
     logout() {
         localStorage.removeItem('id_token');
-        window.location.reload();
+        window.location.assign('/');
     }
 }
 
