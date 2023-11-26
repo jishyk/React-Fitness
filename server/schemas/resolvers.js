@@ -13,10 +13,10 @@ const resolvers = {
             return User.findOne({ username }, { new: true });
         },
         fitEvent: async (parent, { _id }) => {
-            return FitEvent.findOne({ _id });
+            return FitEvent.findOne({ _id }).populate('exerciseId').populate('nutritionId').populate('userId');
         },
         fitEvents: async () => {
-            return FitEvent.find().sort({ createdAt: -1 });
+            return FitEvent.find().sort({ createdAt: -1 }).populate('exerciseId').populate('nutritionId').populate('userId');
         },
         exercise: async (parent, { _id }) => {
             return Exercise.findOne({ _id });
