@@ -38,6 +38,11 @@ const AddNav = () => {
                                 Add Goal
                             </Link>
                         </li>
+                        <li>
+                            <Link to="/journal" className={isActive('/journal')}>
+                                My Journal
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             )}
