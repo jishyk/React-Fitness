@@ -11,7 +11,7 @@ const AddWork = () => {
         name: '',
         exercise: '',
         length: '',
-        caloriesBurned: '',
+        caloriesBurned: 0,
         feeling: '',
     });
 
@@ -31,11 +31,14 @@ const AddWork = () => {
 
         try {
             const { data } = await addExercise({
-                variables: { ...formState },
+                variables: { ...formState, caloriesBurned: parseInt(formState.caloriesBurned),
+                },
             });
             console.log("Exercise added successfully:", data);
 
-            Auth.login(data.addExercise.token);
+            const { token } = data.addExercise;
+            console.log(token);
+            Auth.login(token);
         } catch (e) {
             console.error(e);
         }
@@ -66,7 +69,7 @@ const AddWork = () => {
                         className="form-group"
                         placeholder="Length"
                         name="length"
-                        type="number"
+                        type="text"
                         value={formState.length}
                         onChange={handleChange}
                     />

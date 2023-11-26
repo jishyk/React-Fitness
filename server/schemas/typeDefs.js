@@ -41,6 +41,11 @@ const typeDefs = gql`
     user: User
   }
 
+  type ExerciseResponse {
+    token: ID!
+    exercise: Exercise
+  }
+
   type Query {
     users: [User]
     user(username: String!): User
@@ -62,7 +67,7 @@ const typeDefs = gql`
     updateNutritionGoal(userId: ID!, goalNutrition: Int!): User
     removeExerciseGoal(userId: ID!, goalExercise: Int!): User
     removeNutritionGoal(userId: ID!, goalNutrition: Int!): User
-    addExercise(name: String!, exercise: String!, length: String!, caloriesBurned: Int!, feeling: String!): Exercise
+    addExercise(name: String!, exercise: String!, length: String!, caloriesBurned: Int!, feeling: String!): ExerciseResponse
     addNutrition(name: String!, calories: Int!): Nutrition
     addFitEvent(fitEventType: String!, goalReachedExercise: Boolean!, goalReachedNutrition: Boolean!, exerciseId: ID!, nutritionId: ID!, userId: ID!): FitEvent
     updatedFitEvent(_id: ID!, fitEventType: String!, goalReachedExercise: Boolean!, goalReachedNutrition: Boolean!, exerciseId: ID!, nutritionId: ID!, userId: ID!): FitEvent
