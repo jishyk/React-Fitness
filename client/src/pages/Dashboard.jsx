@@ -15,6 +15,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
+import "../css/dashboard.css";
 import AuthService from '../utils/auth';
 import { Link } from 'react-router-dom';
 const Dashboard = () => {

@@ -7,10 +7,10 @@ import { ADD_NUTRITION } from '../utils/mutations'; // Update mutation import
 const AddNutrition = () => {
     const [formState, setFormState] = useState({
         name: '',
-        calories: 0,
-        protein: 0,
-        carbs: 0,
-        fats: 0
+        calories: '',
+        protein: '',
+        carbs: '',
+        fats: ''
     });
 
     const [addNutrition, { error, data }] = useMutation(ADD_NUTRITION); // Update mutation function
