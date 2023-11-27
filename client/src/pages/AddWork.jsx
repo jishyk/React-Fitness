@@ -11,7 +11,7 @@ const AddWork = () => {
         name: '',
         exercise: '',
         length: '',
-        caloriesBurned: 0,
+        caloriesBurned: '',
         feeling: '',
     });
 
@@ -36,9 +36,7 @@ const AddWork = () => {
             });
             console.log("Exercise added successfully:", data);
 
-            const { token } = data.addExercise;
-            console.log(token);
-            Auth.login(token);
+            setFormState({ name: '', exercise: '', length: '', caloriesBurned: '', feeling: '' });            
         } catch (e) {
             console.error(e);
         }

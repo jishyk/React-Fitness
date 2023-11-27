@@ -15,6 +15,30 @@ const resolvers = {
         fitEvent: async (parent, { _id }) => {
             return FitEvent.findOne({ _id }).populate('exerciseId').populate('nutritionId').populate('userId');
         },
+        todayFitEvents: async (parent, { _id }) => {
+            try {
+                // Get the current date
+                const currentDate = new Date();
+
+                // Set the start and end of the current day
+                const startOfDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+                const endOfDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1);
+
+                // Query for FitEvent records within the current day associated with the specified user _id
+                const fitEvents = await FitEvent.find({
+                    createdAt: {
+                        $gte: startOfDay,
+                        $lt: endOfDay,
+                    },
+                    userId: _id,
+                });
+
+                return fitEvents;
+            } catch (err) {
+                console.error(err);
+                throw new Error('Failed to fetch fit events for the current day');
+            }
+        },
         fitEvents: async () => {
             return FitEvent.find().sort({ createdAt: -1 }).populate('exerciseId').populate('nutritionId').populate('userId');
         },
@@ -129,42 +153,46 @@ const resolvers = {
         // exercise mutations
         addExercise: async (parent, { name, exercise, length, caloriesBurned, feeling }, context) => {
             if (context.user) {
-                return Exercise.create({ name, exercise, length, caloriesBurned, feeling });
+                const newExercise = await Exercise.create({ name, exercise, length, caloriesBurned, feeling });
+                return {
+                    token: context.token,
+                    exercise: newExercise
+                };
             }
-            throw AuthenticationError;
-        },
-        removeExercise: async (parent, { _id }, context) => {
-            if (context.user) {
-                return Exercise.findOneAndDelete({ _id });
-            }
-            throw AuthenticationError;
-        },
-        updateExercise: async (parent, { _id, name, exercise, length, caloriesBurned, feeling }, context) => {
-            if (context.user) {
-                return Exercise.findOneAndUpdate({ _id }, { $set: { name, exercise, length, caloriesBurned, feeling } }, { new: true });
-            }
-            throw AuthenticationError;
-        },
-        // nutrition mutations
-        addNutrition: async (parent, { name, calories }, context) => {
-            if (context.user) {
-                return Nutrition.create({ name, calories });
-            }
-            throw AuthenticationError;
-        },
-        removeNutrition: async (parent, { _id }, context) => {
-            if (context.user) {
-                return Nutrition.findOneAndDelete({ _id });
-            }
-            throw AuthenticationError;
-        },
-        updateNutrition: async (parent, { _id, name }, context) => {
-            if (context.user) {
-                return Nutrition.findOneAndUpdate({ _id }, { $set: { name } }, { new: true });
-            }
-            throw AuthenticationError;
+                throw AuthenticationError;
+            },
+            removeExercise: async (parent, { _id }, context) => {
+                if (context.user) {
+                    return Exercise.findOneAndDelete({ _id });
+                }
+                throw AuthenticationError;
+            },
+                updateExercise: async (parent, { _id, name, exercise, length, caloriesBurned, feeling }, context) => {
+                    if (context.user) {
+                        return Exercise.findOneAndUpdate({ _id }, { $set: { name, exercise, length, caloriesBurned, feeling } }, { new: true });
+                    }
+                    throw AuthenticationError;
+                },
+                    // nutrition mutations
+                    addNutrition: async (parent, { name, calories }, context) => {
+                        if (context.user) {
+                            return Nutrition.create({ name, calories });
+                        }
+                        throw AuthenticationError;
+                    },
+                        removeNutrition: async (parent, { _id }, context) => {
+                            if (context.user) {
+                                return Nutrition.findOneAndDelete({ _id });
+                            }
+                            throw AuthenticationError;
+                        },
+                            updateNutrition: async (parent, { _id, name }, context) => {
+                                if (context.user) {
+                                    return Nutrition.findOneAndUpdate({ _id }, { $set: { name } }, { new: true });
+                                }
+                                throw AuthenticationError;
+                            }
         }
-    }
-};
+    };
 
-module.exports = resolvers;
+    module.exports = resolvers;

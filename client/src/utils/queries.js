@@ -132,6 +132,38 @@ export const QUERY_FITEVENT = gql`
     }
 `;
 
+export const QUERY_TODAYFITEVENTS = gql`
+    query todayFitEvents($_id: ID!) {
+        todayFitEvents(_id: $_id) {
+            _id
+            createdAt
+            fitEventType
+            goalReachedExercise
+            goalReachedNutrition
+            exerciseId {
+                _id
+                name
+                exercise
+                length
+                caloriesBurned
+                feeling
+            }
+            nutritionId {
+                _id
+                name
+                calories
+                }
+            userId {
+                _id
+                username
+                goalExercise
+                goalNutrition
+            }
+        }
+    }
+`;
+
+
 export const QUERY_ME = gql`
     query me {
         me {
