@@ -1,0 +1,46 @@
+.dashHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d4af37;
+    padding: 10px 20px;
+    color: #fff;
+}
+
+.dashHeader h1 {
+    margin: 0;
+}
+
+.dashHeader button {
+    background-color: #808080;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.dashHeader button:hover {
+    background-color: #a08038;
+}
+
+.dashSummary {
+    margin-top: 20px;
+}
+
+.dashSummary h2 {
+    color: #333;
+}
+
+.dashSummary ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dashSummary li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
