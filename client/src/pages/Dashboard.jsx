@@ -38,10 +38,11 @@ const Dashboard = () => {
     }
 
     const username = user.username;
-    const exercise = user.exercise;
-    const nutrition = user.nutrition;
-    const workoutGoal = user.goalExercise;
-    const nutritionGoal = user.goalNutrition;
+    const exercise = user.exercises;
+    console.log(exercise);
+    // const nutrition = user.nutrition;
+    // const workoutGoal = user.goalExercise;
+    // const nutritionGoal = user.goalNutrition;
 
     return (
         <div>
@@ -59,12 +60,12 @@ const Dashboard = () => {
                     <div className='dashSummary'>
                         <h2>Your Day</h2>
                         <ul>
-                            <li>Exercise: {exercise}</li>
-                            <li>Nutrition: {nutrition}</li>
+                            {/* <li>Exercise: {exercise}</li> */}
+                            {/* <li>Nutrition: {nutrition}</li>
                             <li>Goals:
                                 {workoutGoal}
                                 {nutritionGoal}
-                            </li>
+                            </li> */}
                         </ul>
 
                     </div>

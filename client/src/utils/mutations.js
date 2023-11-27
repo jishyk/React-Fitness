@@ -93,17 +93,16 @@ export const REMOVE_NUTRITION_GOAL = gql`
 `;
 
 export const ADD_EXERCISE = gql`
-    mutation addExercise($name: String!, $exercise: String!, $length: String!, $caloriesBurned: Int!, $feeling: String!) {
-        addExercise(name: $name, exercise: $exercise, length: $length, caloriesBurned: $caloriesBurned, feeling: $feeling) {
-            token
-            exercise {
-                _id
-                name
-                exercise
-                length
-                caloriesBurned
-                feeling
-            }
+    mutation addExercise($name: String!, $exercise: String!, $workoutLength: String!, $caloriesBurned: Int!, $feeling: String!) {
+        addExercise(name: $name, exercise: $exercise, workoutLength: $workoutLength, caloriesBurned: $caloriesBurned, feeling: $feeling) {
+            _id
+            name
+            exercise
+            exerciseAuthor
+            workoutLength
+            caloriesBurned
+            feeling
+            createdAt
         }
     }
 `;
@@ -120,95 +119,95 @@ export const ADD_NUTRITION = gql`
     }
 `;
 
-export const ADD_FITEVENT = gql`
-    mutation addFitEvent(
-        $fitEventType: String!
-        $goalReachedExercise: Boolean!
-        $goalReachedNutrition: Boolean!
-        $exerciseId: ID
-        $nutritionId: ID
-        $userId: ID!
-        ) {
-            addFitEvent(
-                fitEventType: $fitEventType
-                goalReachedExercise: $goalReachedExercise
-                goalReachedNutrition: $goalReachedNutrition
-                exerciseId: $exerciseId
-                nutritionId: $nutritionId
-                userId: $userId
-                ) {
-                    fitEvent {
-                        _id
-                        createdAt
-                        fitEventType
-                        goalReachedExercise
-                        goalReachedNutrition
-                        exerciseId
-                        nutritionId
-                        userId {
-                            _id
-                            username
-                        }
-            }
-        }
-    }
-`;
+// export const ADD_FITEVENT = gql`
+//     mutation addFitEvent(
+//         $fitEventType: String!
+//         $goalReachedExercise: Boolean!
+//         $goalReachedNutrition: Boolean!
+//         $exerciseId: ID
+//         $nutritionId: ID
+//         $userId: ID!
+//         ) {
+//             addFitEvent(
+//                 fitEventType: $fitEventType
+//                 goalReachedExercise: $goalReachedExercise
+//                 goalReachedNutrition: $goalReachedNutrition
+//                 exerciseId: $exerciseId
+//                 nutritionId: $nutritionId
+//                 userId: $userId
+//                 ) {
+//                     fitEvent {
+//                         _id
+//                         createdAt
+//                         fitEventType
+//                         goalReachedExercise
+//                         goalReachedNutrition
+//                         exerciseId
+//                         nutritionId
+//                         userId {
+//                             _id
+//                             username
+//                         }
+//             }
+//         }
+//     }
+// `;
 
-export const UPDATE_FITEVENT = gql`
-    mutation updateFitEvent(
-        $_id: ID!
-        $fitEventType: String!
-        $goalReachedExercise: Boolean!
-        $goalReachedNutrition: Boolean!
-        $exerciseId: ID!
-        $nutritionId: ID!
-        $userId: ID!
-        ) {
-            updateFitEvent(
-                _id: $_id
-                fitEventType: $fitEventType
-                goalReachedExercise: $goalReachedExercise
-                goalReachedNutrition: $goalReachedNutrition
-                exerciseId: $exerciseId
-                nutritionId: $nutritionId
-                userId: $userId
-                ) {
-                    fitEvent {
-                        _id
-                        createdAt
-                        fitEventType
-                        goalReachedExercise
-                        goalReachedNutrition
-                        exerciseId
-                        nutritionId
-                        userId {
-                            _id
-                            username
-                        }
-                }
-        }
-    }
-`;  
+// export const UPDATE_FITEVENT = gql`
+//     mutation updateFitEvent(
+//         $_id: ID!
+//         $fitEventType: String!
+//         $goalReachedExercise: Boolean!
+//         $goalReachedNutrition: Boolean!
+//         $exerciseId: ID!
+//         $nutritionId: ID!
+//         $userId: ID!
+//         ) {
+//             updateFitEvent(
+//                 _id: $_id
+//                 fitEventType: $fitEventType
+//                 goalReachedExercise: $goalReachedExercise
+//                 goalReachedNutrition: $goalReachedNutrition
+//                 exerciseId: $exerciseId
+//                 nutritionId: $nutritionId
+//                 userId: $userId
+//                 ) {
+//                     fitEvent {
+//                         _id
+//                         createdAt
+//                         fitEventType
+//                         goalReachedExercise
+//                         goalReachedNutrition
+//                         exerciseId
+//                         nutritionId
+//                         userId {
+//                             _id
+//                             username
+//                         }
+//                 }
+//         }
+//     }
+// `;  
 
-export const REMOVE_FITEVENT = gql`
-    mutation removeFitEvent($_id: ID!) {
-        removeFitEvent(_id: $_id) {
-            fitEvent {
-                _id
-                createdAt
-                fitEventType
-                goalReachedExercise
-                goalReachedNutrition
-                exerciseId
-                nutritionId
-                userId {
-                    _id
-                    username
-                }
-            }
-        }
-    }
-`;
+// export const REMOVE_FITEVENT = gql`
+//     mutation removeFitEvent($_id: ID!) {
+//         removeFitEvent(_id: $_id) {
+//             fitEvent {
+//                 _id
+//                 createdAt
+//                 fitEventType
+//                 goalReachedExercise
+//                 goalReachedNutrition
+//                 exerciseId
+//                 nutritionId
+//                 userId {
+//                     _id
+//                     username
+//                 }
+//             }
+//         }
+//     }
+// `;
 
 export const UPDATE_EXERCISE = gql`
     mutation updateExercise(
