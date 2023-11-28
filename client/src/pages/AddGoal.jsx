@@ -50,6 +50,7 @@ const AddGoal = () => {
                         value={formState.goalExercise}
                         onChange={handleChange}
                     />
+                    <button type="submit" className="add-goal-button">Add Goal</button>
                 </form>
                 <div className="form-group">
                     <Link to="/dashboard" className="back-to-dashboard-button">Back to Dashboard</Link>
