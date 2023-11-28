@@ -15,40 +15,43 @@ import { Link } from "react-router-dom";
 import "../css/add-nutrition.css"; // Update CSS path as needed
 import { useMutation } from "@apollo/client";
 import { ADD_NUTRITION } from '../utils/mutations'; // Update mutation import
+import AuthService from '../utils/auth';
 
 const AddNutrition = () => {
     const [formState, setFormState] = useState({
         name: '',
         calories: '',
-        protein: '',
-        carbs: '',
-        fats: ''
     });
 
-    const [addNutrition, { error, data }] = useMutation(ADD_NUTRITION); // Update mutation function
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    };
+    const [addNutrition, { error }] = useMutation(ADD_NUTRITION); // Update mutation function
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
         try {
             const { data } = await addNutrition({
-                variables: { ...formState },
+                variables: { 
+                    name: formState.name.trim(),
+                    calories: parseInt(formState.calories),
+                    nutritionAuthor: AuthService.getProfile().data.username,
+                 },
             });
             console.log("Nutrition added successfully:", data);
+
+            setFormState({ name: '', calories: '' }); // Reset form
 
             // Update this part as per your application's logic
             // Auth.login might not be necessary here unless it's related to authentication
         } catch (e) {
             console.error(e);
         }
+    };
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
     };
 
     return (
@@ -70,30 +73,6 @@ const AddNutrition = () => {
                         name="calories"
                         type="number"
                         value={formState.calories}
-                        onChange={handleChange}
-                    />
-                    <input 
-                        className="form-group"
-                        placeholder="Protein"
-                        name="protein"
-                        type="number"
-                        value={formState.protein}
-                        onChange={handleChange}
-                    />
-                    <input 
-                        className="form-group"
-                        placeholder="Carbs"
-                        name="carbs"
-                        type="number"
-                        value={formState.carbs}
-                        onChange={handleChange}
-                    />
-                    <input 
-                        className="form-group"
-                        placeholder="Fats"
-                        name="fats"
-                        type="number"
-                        value={formState.fats}
                         onChange={handleChange}
                     />
                     <button className="add-nutrition-button" type="submit">Add Nutrition</button>

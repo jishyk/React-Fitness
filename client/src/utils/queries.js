@@ -8,6 +8,21 @@ export const QUERY_USERS = gql`
             email
             goalExercise
             goalNutrition
+            exercises {
+                _id
+                name
+                exercise
+                exerciseAuthor
+                workoutLength
+                caloriesBurned
+                feeling
+                createdAt
+            }
+            nutritions {
+                _id
+                name
+                calories
+            }
         }
     }
 `;
@@ -45,9 +60,11 @@ export const QUERY_EXERCISES = gql`
             _id
             name
             exercise
-            length
+            exerciseAuthor
+            workoutLength
             caloriesBurned
             feeling
+            createdAt
         }
     }
 `;
@@ -58,9 +75,11 @@ export const QUERY_EXERCISE = gql`
             _id
             name
             exercise
-            length
+            exerciseAuthor
+            workoutLength
             caloriesBurned
             feeling
+            createdAt
         }
     }
 `;
@@ -71,6 +90,8 @@ export const QUERY_NUTRITIONS = gql`
             _id
             name
             calories
+            nutritionAuthor
+            createdAt
         }
     }
 `;
@@ -81,6 +102,8 @@ export const QUERY_NUTRITION = gql`
             _id
             name
             calories
+            nutritionAuthor
+            createdAt
         }
     }
 `;
