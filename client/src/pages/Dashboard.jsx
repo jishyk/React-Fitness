@@ -17,6 +17,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import "../css/dashboard.css";
 import AuthService from '../utils/auth';
+import TodayExercise from "../components/TodayExcercise";
 import { Link } from 'react-router-dom';
 const Dashboard = () => {
     const { loading, error, data } = useQuery(QUERY_ME);
@@ -45,6 +46,8 @@ const Dashboard = () => {
     // const workoutGoal = user.goalExercise;
     // const nutritionGoal = user.goalNutrition;
 
+
+
     return (
         <div>
             {/* Checks to see if user is logged in using the auth.js in utils,
@@ -53,25 +56,20 @@ const Dashboard = () => {
             {AuthService.loggedIn() ? (
                 <div>
                     <div className='dashHeader'>
-                    <h1>Welcome {username}</h1>
-                    <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                        Logout
-                    </button>
+                        <h1>Welcome {username}</h1>
+                        <button className="btn btn-lg btn-light m-2" onClick={logout}>
+                            Logout
+                        </button>
                     </div>
                     <div className='dashSummary'>
                         <h2>Your Day</h2>
-                        <ul>
-                            {/* <li>Exercise: {exercise}</li> */}
-                            {/* <li>Nutrition: {nutrition}</li>
-                            <li>Goals:
-                                {workoutGoal}
-                                {nutritionGoal}
-                            </li> */}
-                        </ul>
+                        <div>
+                            <TodayExercise />
+                        </div>
 
                     </div>
                 </div>
-                
+
             ) : (
                 <h2>Sorry you must be logged in</h2>
             )}

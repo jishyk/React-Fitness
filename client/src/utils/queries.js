@@ -60,6 +60,7 @@ export const QUERY_EXERCISES = gql`
             _id
             name
             exercise
+
             exerciseAuthor
             workoutLength
             caloriesBurned
