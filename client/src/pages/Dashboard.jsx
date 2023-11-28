@@ -18,6 +18,7 @@ import { QUERY_ME } from '../utils/queries';
 import "../css/dashboard.css";
 import AuthService from '../utils/auth';
 import TodayExercise from "../components/TodayExcercise";
+import TodayNutrition from "../components/TodayNutrition";
 import { Link } from 'react-router-dom';
 const Dashboard = () => {
     const { loading, error, data } = useQuery(QUERY_ME);
@@ -66,7 +67,9 @@ const Dashboard = () => {
                         <div>
                             <TodayExercise />
                         </div>
-
+                        <div>
+                            <TodayNutrition />
+                        </div>
                     </div>
                 </div>
 
