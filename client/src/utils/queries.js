@@ -45,9 +45,11 @@ export const QUERY_EXERCISES = gql`
             _id
             name
             exercise
-            length
+            workoutLength
             caloriesBurned
             feeling
+            exerciseAuthor
+            createdAt
         }
     }
 `;
