@@ -1,12 +1,14 @@
 [
   {
     "name": "Push Up",
+    "exerciseAuthor": "workoutwarrior",
     "description": "A basic push up exercise",
     "difficulty": "Medium",
     "caloriesBurned": 100
   },
   {
     "name": "Bench Press",
+    "exerciseAuthor": "workoutwarrior",
     "description": "A basic bench press exercise",
     "difficulty": "Hard",
     "caloriesBurned": 200

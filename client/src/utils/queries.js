@@ -20,6 +20,21 @@ export const QUERY_USER = gql`
             email
             goalExercise
             goalNutrition
+            exercises {
+                _id
+                name
+                exercise
+                exerciseAuthor
+                workoutLength
+                caloriesBurned
+                feeling
+                createdAt
+            }
+            nutritions {
+                _id
+                name
+                calories
+            }
         }
     }
 `;
@@ -70,98 +85,98 @@ export const QUERY_NUTRITION = gql`
     }
 `;
 
-export const QUERY_FITEVENTS = gql`
-    query fitEvents {
-        fitEvents {
-            _id
-            createdAt
-            fitEventType
-            goalReachedExercise
-            goalReachedNutrition
-            exerciseId {
-                _id
-                name
-                exercise
-                length
-                caloriesBurned
-                feeling
-            }
-            nutritionId {
-                _id
-                name
-                calories
-                }
-            userId {
-                _id
-                username
-                goalExercise
-                goalNutrition
-            }
-        }
-    }
-`;
+// export const QUERY_FITEVENTS = gql`
+//     query fitEvents {
+//         fitEvents {
+//             _id
+//             createdAt
+//             fitEventType
+//             goalReachedExercise
+//             goalReachedNutrition
+//             exerciseId {
+//                 _id
+//                 name
+//                 exercise
+//                 length
+//                 caloriesBurned
+//                 feeling
+//             }
+//             nutritionId {
+//                 _id
+//                 name
+//                 calories
+//                 }
+//             userId {
+//                 _id
+//                 username
+//                 goalExercise
+//                 goalNutrition
+//             }
+//         }
+//     }
+// `;
 
-export const QUERY_FITEVENT = gql`
-    query fitEvent($_id: ID!) {
-        fitEvent(_id: $_id) {
-            _id
-            createdAt
-            fitEventType
-            goalReachedExercise
-            goalReachedNutrition
-            exerciseId {
-                _id
-                name
-                exercise
-                length
-                caloriesBurned
-                feeling
-            }
-            nutritionId {
-                _id
-                name
-                calories
-                }
-            userId {
-                _id
-                username
-                goalExercise
-                goalNutrition
-            }
-        }
-    }
-`;
+// export const QUERY_FITEVENT = gql`
+//     query fitEvent($_id: ID!) {
+//         fitEvent(_id: $_id) {
+//             _id
+//             createdAt
+//             fitEventType
+//             goalReachedExercise
+//             goalReachedNutrition
+//             exerciseId {
+//                 _id
+//                 name
+//                 exercise
+//                 length
+//                 caloriesBurned
+//                 feeling
+//             }
+//             nutritionId {
+//                 _id
+//                 name
+//                 calories
+//                 }
+//             userId {
+//                 _id
+//                 username
+//                 goalExercise
+//                 goalNutrition
+//             }
+//         }
+//     }
+// `;
 
-export const QUERY_TODAYFITEVENTS = gql`
-    query todayFitEvents($_id: ID!) {
-        todayFitEvents(_id: $_id) {
-            _id
-            createdAt
-            fitEventType
-            goalReachedExercise
-            goalReachedNutrition
-            exerciseId {
-                _id
-                name
-                exercise
-                length
-                caloriesBurned
-                feeling
-            }
-            nutritionId {
-                _id
-                name
-                calories
-                }
-            userId {
-                _id
-                username
-                goalExercise
-                goalNutrition
-            }
-        }
-    }
-`;
+// export const QUERY_TODAYFITEVENTS = gql`
+//     query todayFitEvents($_id: ID!) {
+//         todayFitEvents(_id: $_id) {
+//             _id
+//             createdAt
+//             fitEventType
+//             goalReachedExercise
+//             goalReachedNutrition
+//             exerciseId {
+//                 _id
+//                 name
+//                 exercise
+//                 length
+//                 caloriesBurned
+//                 feeling
+//             }
+//             nutritionId {
+//                 _id
+//                 name
+//                 calories
+//                 }
+//             userId {
+//                 _id
+//                 username
+//                 goalExercise
+//                 goalNutrition
+//             }
+//         }
+//     }
+// `;
 
 
 export const QUERY_ME = gql`
@@ -172,6 +187,21 @@ export const QUERY_ME = gql`
             email
             goalExercise
             goalNutrition
+            exercises {
+                _id
+                name
+                exercise
+                exerciseAuthor
+                workoutLength
+                caloriesBurned
+                feeling
+                createdAt
+            }
+            nutritions {
+                _id
+                name
+                calories
+            }
         }
     }
 `;

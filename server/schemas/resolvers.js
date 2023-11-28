@@ -7,56 +7,58 @@ const { FitEvent } = require('../models');
 const resolvers = {
     Query: {
         users: async () => {
-            return User.find();
+            return User.find().populate('exercises').populate('nutritions');
         },
         user: async (parent, { username }) => {
-            return User.findOne({ username }, { new: true });
+            return User.findOne({ username }).populate('exercises').populate('nutritions');
         },
-        fitEvent: async (parent, { _id }) => {
-            return FitEvent.findOne({ _id }).populate('exerciseId').populate('nutritionId').populate('userId');
-        },
-        todayFitEvents: async (parent, { _id }) => {
-            try {
-                // Get the current date
-                const currentDate = new Date();
+        // fitEvent: async (parent, { _id }) => {
+        //     return FitEvent.findOne({ _id }).populate('exerciseId').populate('nutritionId').populate('userId');
+        // },
+        // todayFitEvents: async (parent, { _id }) => {
+        //     try {
+        //         // Get the current date
+        //         const currentDate = new Date();
 
-                // Set the start and end of the current day
-                const startOfDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
-                const endOfDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1);
+        //         // Set the start and end of the current day
+        //         const startOfDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+        //         const endOfDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1);
 
-                // Query for FitEvent records within the current day associated with the specified user _id
-                const fitEvents = await FitEvent.find({
-                    createdAt: {
-                        $gte: startOfDay,
-                        $lt: endOfDay,
-                    },
-                    userId: _id,
-                });
+        //         // Query for FitEvent records within the current day associated with the specified user _id
+        //         const fitEvents = await FitEvent.find({
+        //             createdAt: {
+        //                 $gte: startOfDay,
+        //                 $lt: endOfDay,
+        //             },
+        //             userId: _id,
+        //         });
 
-                return fitEvents;
-            } catch (err) {
-                console.error(err);
-                throw new Error('Failed to fetch fit events for the current day');
-            }
+        //         return fitEvents;
+        //     } catch (err) {
+        //         console.error(err);
+        //         throw new Error('Failed to fetch fit events for the current day');
+        //     }
+        // },
+        // fitEvents: async () => {
+        //     return FitEvent.find().sort({ createdAt: -1 }).populate('exerciseId').populate('nutritionId').populate('userId');
+        // },
+        exercise: async (parent, { exerciseId }) => {
+            return Exercise.findOne({ _id: exerciseId });
         },
-        fitEvents: async () => {
-            return FitEvent.find().sort({ createdAt: -1 }).populate('exerciseId').populate('nutritionId').populate('userId');
+        exercises: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Exercise.find(params).sort({ createdAt: -1 });
         },
-        exercise: async (parent, { _id }) => {
-            return Exercise.findOne({ _id });
+        nutrition: async (parent, { nutritionId }) => {
+            return Nutrition.findOne({ _id: nutritionId });
         },
-        exercises: async () => {
-            return Exercise.find();
-        },
-        nutrition: async (parent, { _id }) => {
-            return Nutrition.findOne({ _id });
-        },
-        nutritions: async () => {
-            return Nutrition.find();
+        nutritions: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Nutrition.find(params).sort({ createdAt: -1 });
         },
         me: async (parent, args, context) => {
             if (context.user) {
-                return User.findOne({ _id: context.user._id });
+                return User.findOne({ _id: context.user._id }).populate('exercises').populate('nutritions');
             } throw AuthenticationError;
         }
     },
@@ -129,70 +131,89 @@ const resolvers = {
             throw AuthenticationError;
         },
         // fitEvent mutations
-        addFitEvent: async (parent, { fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId }, context) => {
-            if (context.user) {
-                return FitEvent.create({ fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId });
-            }
-            throw AuthenticationError;
-        },
-        updatedFitEvent: async (parent, { _id, fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId }, context) => {
-            if (context.user) {
-                return FitEvent.findOneAndUpdate(
-                    { _id },
-                    { $set: { fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId } },
-                    { new: true });
-            }
-            throw AuthenticationError;
-        },
-        removeFitEvent: async (parent, { _id }, context) => {
-            if (context.user) {
-                return FitEvent.findOneAndDelete({ _id });
-            }
-            throw AuthenticationError;
-        },
+        // addFitEvent: async (parent, { fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId }, context) => {
+        //     if (context.user) {
+        //         return FitEvent.create({ fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId });
+        //     }
+        //     throw AuthenticationError;
+        // },
+        // updatedFitEvent: async (parent, { _id, fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId }, context) => {
+        //     if (context.user) {
+        //         return FitEvent.findOneAndUpdate(
+        //             { _id },
+        //             { $set: { fitEventType, goalReachedExercise, goalReachedNutrition, exerciseId, nutritionId, userId } },
+        //             { new: true });
+        //     }
+        //     throw AuthenticationError;
+        // },
+        // removeFitEvent: async (parent, { _id }, context) => {
+        //     if (context.user) {
+        //         return FitEvent.findOneAndDelete({ _id });
+        //     }
+        //     throw AuthenticationError;
+        // },
         // exercise mutations
-        addExercise: async (parent, { name, exercise, length, caloriesBurned, feeling }, context) => {
+        addExercise: async (parent, { name, exercise, workoutLength, caloriesBurned, feeling }, context) => {
             if (context.user) {
-                const newExercise = await Exercise.create({ name, exercise, length, caloriesBurned, feeling });
+                // const token = signToken(context.user);
+                const newExercise = await Exercise.create({
+                    name,
+                    exercise,
+                    workoutLength,
+                    caloriesBurned,
+                    feeling,
+                    exerciseAuthor: context.user.username,
+
+                });
+                await User.findOneAndUpdate(
+                    {
+                        _id: context.user._id,
+                    },
+                    {
+                        $addToSet: { exercises: newExercise._id }
+                    },
+                );
+                console.log(newExercise);
                 return {
-                    token: context.token,
-                    exercise: newExercise
+                    // token: token,
+                    exercise: newExercise,
+
                 };
             }
-                throw AuthenticationError;
-            },
-            removeExercise: async (parent, { _id }, context) => {
-                if (context.user) {
-                    return Exercise.findOneAndDelete({ _id });
-                }
-                throw AuthenticationError;
-            },
-                updateExercise: async (parent, { _id, name, exercise, length, caloriesBurned, feeling }, context) => {
-                    if (context.user) {
-                        return Exercise.findOneAndUpdate({ _id }, { $set: { name, exercise, length, caloriesBurned, feeling } }, { new: true });
-                    }
-                    throw AuthenticationError;
-                },
-                    // nutrition mutations
-                    addNutrition: async (parent, { name, calories }, context) => {
-                        if (context.user) {
-                            return Nutrition.create({ name, calories });
-                        }
-                        throw AuthenticationError;
-                    },
-                        removeNutrition: async (parent, { _id }, context) => {
-                            if (context.user) {
-                                return Nutrition.findOneAndDelete({ _id });
-                            }
-                            throw AuthenticationError;
-                        },
-                            updateNutrition: async (parent, { _id, name }, context) => {
-                                if (context.user) {
-                                    return Nutrition.findOneAndUpdate({ _id }, { $set: { name } }, { new: true });
-                                }
-                                throw AuthenticationError;
-                            }
+            throw AuthenticationError;
+        },
+        removeExercise: async (parent, { _id }, context) => {
+            if (context.user) {
+                return Exercise.findOneAndDelete({ _id });
+            }
+            throw AuthenticationError;
+        },
+        updateExercise: async (parent, { _id, name, exercise, length, caloriesBurned, feeling }, context) => {
+            if (context.user) {
+                return Exercise.findOneAndUpdate({ _id }, { $set: { name, exercise, length, caloriesBurned, feeling } }, { new: true });
+            }
+            throw AuthenticationError;
+        },
+        // nutrition mutations
+        addNutrition: async (parent, { name, calories }, context) => {
+            if (context.user) {
+                return Nutrition.create({ name, calories });
+            }
+            throw AuthenticationError;
+        },
+        removeNutrition: async (parent, { _id }, context) => {
+            if (context.user) {
+                return Nutrition.findOneAndDelete({ _id });
+            }
+            throw AuthenticationError;
+        },
+        updateNutrition: async (parent, { _id, name }, context) => {
+            if (context.user) {
+                return Nutrition.findOneAndUpdate({ _id }, { $set: { name } }, { new: true });
+            }
+            throw AuthenticationError;
         }
-    };
+    }
+};
 
-    module.exports = resolvers;
+module.exports = resolvers;
