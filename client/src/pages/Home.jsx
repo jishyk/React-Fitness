@@ -19,20 +19,6 @@ export default function Home() {
         </p>
       </div>
       <div className="signup-box">
-        <h2>Sign Up</h2>
-        {/* <form>
-          <div className="form-group">
-            <label htmlFor="emailOrPhone"></label>
-            <input type="text" id="emailOrPhone" name="emailOrPhone" placeholder="Enter Email or Phone #" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password"></label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" />
-          </div>
-          <div className="form-group">
-            <button type="submit" className="login-button">Login</button>
-          </div>
-        </form> */}
         <Login />
         <div className="form-group">
           <Link to="/create-account" className="signup-button">Create New Account</Link>
