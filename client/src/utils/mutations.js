@@ -110,11 +110,11 @@ export const ADD_EXERCISE = gql`
 export const ADD_NUTRITION = gql`
     mutation addNutrition($name: String!, $calories: Int!) {
         addNutrition(name: $name, calories: $calories) {
-            nutrition {
-                _id
-                name
-                calories
-            }
+            _id
+            name
+            calories
+            nutritionAuthor
+            createdAt
         }
     }
 `;

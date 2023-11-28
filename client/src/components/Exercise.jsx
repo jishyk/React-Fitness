@@ -47,7 +47,7 @@ const AddExercise = () => {
             console.log("Exercise added successfully:", data);
 
 
-            setExerciseInfo({ name: '', exercise: '', length: '', caloriesBurned: '', feeling: '' });
+            setExerciseInfo({ name: '', exercise: '', workoutLength: '', caloriesBurned: '', feeling: '' });
         } catch (e) {
             console.error(e);
         }
@@ -57,7 +57,7 @@ const AddExercise = () => {
         const { name, value } = event.target;
 
         setExerciseInfo({
-            ...exerciseInfo,
+            ...exerciseInfo, 
             [name]: value,
 
         });
