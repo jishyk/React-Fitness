@@ -5,7 +5,11 @@
     align-items: center;
     padding: 20px;
     min-height: 100vh;
-    background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
+    background-image: url('../assets/Nutrition1.jpeg'); /* Add a background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%); */
     animation: bgShift 7s ease infinite alternate;
 }
 
@@ -15,10 +19,10 @@
 }
 
 .add-nutrition-box {
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.214);
     padding: 35px;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.339);
     max-width: 500px;
     width: 100%;
     animation: fadeIn 0.5s ease-out;
@@ -30,10 +34,11 @@
 }
 
 .add-nutrition-box h2 {
-    color: #662d1c;
+    color: #3d1c03;
     margin-bottom: 25px;
     font-size: 2.3em;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 .form-group {
@@ -55,7 +60,7 @@
 
 .add-nutrition-button {
     width: 100%;
-    background-color: #ff6b6b;
+    background-color: #009e27ac;
     color: white;
     padding: 12px;
     border: none;
@@ -66,19 +71,19 @@
 }
 
 .add-nutrition-button:hover {
-    background-color: #ff7878;
+    background-color: #4cbc50ac;
 }
 
 .back-to-dashboard-button {
     display: block;
     text-align: center;
     margin-top: 20px;
-    color: #ff6b6b;
+    color: #f11313;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .back-to-dashboard-button:hover {
-    color: #ff7878;
+    color: #9c2121;
     text-decoration: underline;
 }
