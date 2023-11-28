@@ -27,6 +27,8 @@ const typeDefs = gql`
     _id: ID
     name: String
     calories: Int
+    nutritionAuthor: String
+    createdAt: String
   }
 
   type FitEvent {

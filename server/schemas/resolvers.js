@@ -2,7 +2,6 @@ const { User } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const { Exercise } = require('../models');
 const { Nutrition } = require('../models');
-const { FitEvent } = require('../models');
 
 const resolvers = {
     Query: {
@@ -163,20 +162,19 @@ const resolvers = {
                     caloriesBurned,
                     feeling,
                     exerciseAuthor: context.user.username,
-
                 });
                 await User.findOneAndUpdate(
                     {
                         _id: context.user._id,
                     },
                     {
-                        $addToSet: { exercises: newExercise._id }
+                        $addToSet: { exercises: newExercise }
                     },
                 );
                 console.log(newExercise);
                 return {
                     // token: token,
-                    exercise: newExercise,
+                    exercises: newExercise,
 
                 };
             }
@@ -197,9 +195,25 @@ const resolvers = {
         // nutrition mutations
         addNutrition: async (parent, { name, calories }, context) => {
             if (context.user) {
-                return Nutrition.create({ name, calories });
-            }
-            throw AuthenticationError;
+                const newNutrition = await Nutrition.create({
+                    name,
+                    calories,
+                    nutritionAuthor: context.user.username,
+                });
+                await User.findOneAndUpdate(
+                    {
+                        _id: context.user._id,
+                    },
+                    {
+                        $addToSet: { nutritions: newNutrition }
+                    },
+                );
+                console.log(newNutrition);
+                return {
+                    nutritions: newNutrition,
+                };
+            } 
+            throw AuthenticationError;         
         },
         removeNutrition: async (parent, { _id }, context) => {
             if (context.user) {
