@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-// import { QUERY_FITEVENTS } from '../utils/queries';
+import { QUERY_EXERCISES } from '../utils/queries';
 
 const styles = {
     fitEventsContainer: {
@@ -55,7 +55,7 @@ const styles = {
 }
 
 const Journal = () => {
-    const { loading, data, error } = useQuery(QUERY_FITEVENTS);
+    const { loading, data, error } = useQuery(QUERY_EXERCISES);
 
     useEffect(() => {
         console.log(data);
