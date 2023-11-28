@@ -1,0 +1,83 @@
+#create-account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+    background-image: url('../assets/CreateAccount.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: bgShift 7s ease infinite alternate;
+}
+
+.signup-box {
+    background: rgba(255, 255, 255, 0.144);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.023);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.signup-box h2 {
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-group input {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 2px solid #0090c1;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #333;
+    font-size: 1em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.login-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: #020303;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #090e10;
+}
+
+.signup-button {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #0c0f10;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.signup-button:hover {
+    color: #007fad;
+    text-decoration: underline;
+}
