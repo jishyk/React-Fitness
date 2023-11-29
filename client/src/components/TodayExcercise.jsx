@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_EXERCISES } from '../utils/queries';
+import { QUERY_TODAYEXERCISES } from '../utils/queries';
 
 const styles = {
     TempContainer: {
@@ -84,8 +85,10 @@ const styles = {
     },
 }
 
-const TodayExercise = () => {
-    const { loading, data, error } = useQuery(QUERY_EXERCISES);
+const TodayExercise = ({ username }) => {
+    const { loading, data, error } = useQuery(QUERY_TODAYEXERCISES, {
+        variables: { username },
+    });
 
     useEffect(() => {
         console.log(data);
@@ -95,7 +98,7 @@ const TodayExercise = () => {
         return <h3>Loading...</h3>;
     }
 
-    const exercises = data?.exercises || [];
+    const exercises = data?.todayExercises || [];
 
     if (!exercises.length) {
         return <h3>You have no exercises logged yet for today. Add an exercise to get started!</h3>

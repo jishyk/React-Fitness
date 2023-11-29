@@ -171,37 +171,32 @@ export const QUERY_NUTRITION = gql`
 //     }
 // `;
 
-// export const QUERY_TODAYFITEVENTS = gql`
-//     query todayFitEvents($_id: ID!) {
-//         todayFitEvents(_id: $_id) {
-//             _id
-//             createdAt
-//             fitEventType
-//             goalReachedExercise
-//             goalReachedNutrition
-//             exerciseId {
-//                 _id
-//                 name
-//                 exercise
-//                 length
-//                 caloriesBurned
-//                 feeling
-//             }
-//             nutritionId {
-//                 _id
-//                 name
-//                 calories
-//                 }
-//             userId {
-//                 _id
-//                 username
-//                 goalExercise
-//                 goalNutrition
-//             }
-//         }
-//     }
-// `;
+export const QUERY_TODAYEXERCISES = gql`
+    query todayExercises($username: String!) {
+        todayExercises(username: $username) {
+            _id
+            name
+            exercise
+            workoutLength
+            caloriesBurned
+            feeling
+            exerciseAuthor
+            createdAt
+        }
+    }
+`;
 
+export const QUERY_TODAYNUTRITIONS = gql`
+    query todayNutritions($username: String!) {
+        todayNutritions(username: $username) {
+            _id
+            name
+            calories
+            nutritionAuthor
+            createdAt
+        }
+    }
+`;
 
 export const QUERY_ME = gql`
     query me {

@@ -11,36 +11,15 @@ const resolvers = {
         user: async (parent, { username }) => {
             return User.findOne({ username }).populate('exercises').populate('nutritions');
         },
-        // fitEvent: async (parent, { _id }) => {
-        //     return FitEvent.findOne({ _id }).populate('exerciseId').populate('nutritionId').populate('userId');
-        // },
-        // todayFitEvents: async (parent, { _id }) => {
-        //     try {
-        //         // Get the current date
-        //         const currentDate = new Date();
-
-        //         // Set the start and end of the current day
-        //         const startOfDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
-        //         const endOfDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1);
-
-        //         // Query for FitEvent records within the current day associated with the specified user _id
-        //         const fitEvents = await FitEvent.find({
-        //             createdAt: {
-        //                 $gte: startOfDay,
-        //                 $lt: endOfDay,
-        //             },
-        //             userId: _id,
-        //         });
-
-        //         return fitEvents;
-        //     } catch (err) {
-        //         console.error(err);
-        //         throw new Error('Failed to fetch fit events for the current day');
-        //     }
-        // },
-        // fitEvents: async () => {
-        //     return FitEvent.find().sort({ createdAt: -1 }).populate('exerciseId').populate('nutritionId').populate('userId');
-        // },
+        
+        todayExercises: async (parent, { username }) => {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Set time to the beginning of the day
+          
+            const params = username ? { exerciseAuthor: username, createdAt: { $gte: today } } : { createdAt: { $gte: today } };
+            return Exercise.find(params).sort({ createdAt: -1 });
+          },
+        
         exercise: async (parent, { exerciseId }) => {
             return Exercise.findOne({ _id: exerciseId });
         },
@@ -48,6 +27,13 @@ const resolvers = {
             const params = username ? { username } : {};
             return Exercise.find(params).sort({ createdAt: -1 });
         },
+        todayNutritions: async (parent, { username }) => {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Set time to the beginning of the day
+          
+            const params = username ? { nutritionAuthor: username, createdAt: { $gte: today } } : { createdAt: { $gte: today } };
+            return Nutrition.find(params).sort({ createdAt: -1 });
+          },
         nutrition: async (parent, { nutritionId }) => {
             return Nutrition.findOne({ _id: nutritionId });
         },

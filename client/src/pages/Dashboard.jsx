@@ -65,10 +65,10 @@ const Dashboard = () => {
                     <div className='dashSummary'>
                         <h2>Your Day</h2>
                         <div>
-                            <TodayExercise />
+                            <TodayExercise username={username}/>
                         </div>
                         <div>
-                            <TodayNutrition />
+                            <TodayNutrition username={username}/>
                         </div>
                     </div>
                 </div>
