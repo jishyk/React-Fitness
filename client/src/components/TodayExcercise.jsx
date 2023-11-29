@@ -92,7 +92,7 @@ const TodayExercise = ({ username, workoutGoal }) => {
 
     useEffect(() => {
         refetch();
-      }, []);
+    }, []);
 
     if (loading) {
         return <h3>Loading...</h3>;
@@ -109,23 +109,37 @@ const TodayExercise = ({ username, workoutGoal }) => {
         calBurnedTotal += exercises[i].caloriesBurned;
     }
     console.log(calBurnedTotal);
+    let calToGo = workoutGoal - calBurnedTotal;
+    console.log(calToGo);
 
-    let goalExerciseReached =  false;
-    if (calBurnedTotal >= { workoutGoal }) {
+    let goalExerciseReached = false;
+    if (calBurnedTotal >= workoutGoal) {
         goalExerciseReached = true;
-    }
-    console.log(goalExerciseReached)
+    };
+    console.log(workoutGoal);
+    console.log(goalExerciseReached);
 
 
     return (
         <div>
             <h3>Exercises</h3>
+            {!workoutGoal ? (<div style={styles.TempStatusContainer}>
+            <div>SET A GOAL TO TRACK YOUR PROGRESS</div>
+                </div>) : (
             <div style={styles.TempStatusContainer}>
-            <div>STATUS</div>
-            <div style={styles.TempStatusIndicator}>Placeholder for success or fail emoji</div>
-            <div>Placeholder for calories burned</div>
-            <div>Placeholder for calories burned goal</div>
-                </div>
+                <div>STATUS</div>
+                {goalExerciseReached ? (
+                    <div style={styles.TempStatusIndicator}>SUCCESS</div>
+                ) : (
+                    <div style={styles.TempStatusIndicator}>FAIL</div>
+                )}
+                {goalExerciseReached ? (
+                    <div></div>
+                ) : (
+                    <div>Calories to go: {calToGo}</div>
+                )}
+                <div> Calories: {calBurnedTotal}/{workoutGoal}</div>
+                </div>)}
             <div style={styles.TempContainer}>
                 {exercises &&
                     exercises.map((exercise) => (
