@@ -12,7 +12,7 @@
 // export default Dashboard;
 
 // Dashboard.js
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import "../css/dashboard.css";
@@ -22,6 +22,9 @@ import TodayNutrition from "../components/TodayNutrition";
 import { Link } from 'react-router-dom';
 const Dashboard = () => {
     const { loading, error, data } = useQuery(QUERY_ME);
+    const [displayExercises, setDisplayExercises] = useState(false);
+    const [displayNutritions, setDisplayNutritions] = useState(false);
+
     const logout = (event) => {
         AuthService.logout();
     };
@@ -44,8 +47,19 @@ const Dashboard = () => {
     const exercise = user.exercises;
     console.log(exercise);
     // const nutrition = user.nutrition;
-    // const workoutGoal = user.goalExercise;
-    // const nutritionGoal = user.goalNutrition;
+    const workoutGoal = user.goalExercise;
+    const nutritionGoal = user.goalNutrition;
+    console.log(nutritionGoal);
+    console.log(workoutGoal);
+    
+
+    const toggleDisplayExercises = () => {
+        setDisplayExercises(!displayExercises);
+    };
+    const toggleDisplayNutritions = () => {
+        setDisplayNutritions(!displayNutritions);
+    };
+
 
 
 
@@ -65,10 +79,22 @@ const Dashboard = () => {
                     <div className='dashSummary'>
                         <h2>Your Day</h2>
                         <div>
-                            <TodayExercise username={username}/>
+                            <button
+                            onClick={toggleDisplayExercises}>
+                                {displayExercises ? "Hide Exercises" : "Show Exercises"}
+                                </button>
+                            {displayExercises && <TodayExercise />}
                         </div>
                         <div>
-                            <TodayNutrition username={username}/>
+                            <button
+                            onClick={toggleDisplayNutritions}>
+                                {displayNutritions ? "Hide Nutrition" : "Show Nutrition"}
+                            </button>
+                            {displayNutritions && <TodayNutrition />}
+                           
+                        
+                       
+                        
                         </div>
                     </div>
                 </div>
@@ -82,3 +108,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

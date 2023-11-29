@@ -6,10 +6,10 @@ const { Nutrition } = require('../models');
 const resolvers = {
     Query: {
         users: async () => {
-            return User.find().populate('exercises').populate('nutritions');
+            return User.find().populate('exercises').populate('nutritions').populate('goalExercise').populate('goalNutrition');
         },
         user: async (parent, { username }) => {
-            return User.findOne({ username }).populate('exercises').populate('nutritions');
+            return User.findOne({ username }).populate('exercises').populate('nutritions').populate('goalExercise').populate('goalNutrition');
         },
         
         todayExercises: async (parent, { username }) => {
@@ -41,6 +41,14 @@ const resolvers = {
             const params = username ? { username } : {};
             return Nutrition.find(params).sort({ createdAt: -1 });
         },
+        goalExercise: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return User.find(params).sort({ createdAt: -1 });
+        },
+        goalNutrition: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return User.find(params).sort({ createdAt: -1 });
+        },
         me: async (parent, args, context) => {
             if (context.user) {
                 return User.findOne({ _id: context.user._id }).populate('exercises').populate('nutritions');
@@ -49,8 +57,8 @@ const resolvers = {
     },
     Mutation: {
         // user mutations
-        addUser: async (parent, { username, email, password }) => {
-            const user = await User.create({ username, email, password });
+        addUser: async (parent, { username, email, password, goalExercise, goalNutrition }) => {
+            const user = await User.create({ username, email, password, goalExercise, goalNutrition });
             const token = signToken(user);
             return { token, user };
         },
@@ -87,6 +95,38 @@ const resolvers = {
             throw AuthenticationError;
         },
         // goal mutations
+        addExerciseGoal: async (parent, { goalExercise }, context) => {
+            console.log(goalExercise)
+            if (context.user) {
+               return User.findOneAndUpdate(
+                    {
+                        _id: context.user._id,
+                    },
+                    {
+                    goalExercise,
+                    },
+                    {
+                        new: true,
+                    });
+            }
+            throw AuthenticationError;
+        },
+        addNutritionGoal: async (parent, { goalNutrition }, context) => {
+            if (context.user) {
+                const newNutritionGoal = await User.findOneAndUpdate({
+                    goalNutrition
+                },
+                {
+                    $addToSet: { goalNutrition: newNutritionGoal}
+                }
+                );
+                console.log(newNutritionGoal);
+                return {
+                    goalNutrition: newNutritionGoal,
+                }
+            }
+            throw AuthenticationError;
+        },
         updateExerciseGoal: async (parent, { goalExercise }, context) => {
             if (context.user) {
                 return User.findOneAndUpdate({ _id: context.user._id }, { $set: { goalExercise } }, { new: true });

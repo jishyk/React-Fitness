@@ -2,12 +2,14 @@
 import { gql } from '@apollo/client';
 
 export const ADD_USER = gql`
-    mutation addUser($username: String!, $email: String!, $password: String!) {
-        addUser(username: $username, email: $email, password: $password) {
+    mutation addUser($username: String!, $email: String!, $password: String!, $goalExercise: Int!, $goalNutrition: Int!) {
+        addUser(username: $username, email: $email, password: $password, goalExercise: $goalExercise, goalNutrition: $goalNutrition) {
             token
             user {
                 _id
                 username
+                goalExercise
+                goalNutrition
             }
         }
     }
@@ -115,6 +117,24 @@ export const ADD_NUTRITION = gql`
             calories
             nutritionAuthor
             createdAt
+        }
+    }
+`;
+
+export const ADD_GOALEXERCISE = gql`
+    mutation addExerciseGoal($goalExercise: Int!) {
+        addExerciseGoal(goalExercise: $goalExercise) {
+            _id
+            goalExercise
+        }
+    }
+`;
+
+export const ADD_GOALNUTRITION = gql`
+    mutation addNutritionGoal($goalNutrition: Int!) {
+        addNutritionGoal(goalNutrition: $goalNutrition) {
+            _id
+            goalNutrition
         }
     }
 `;
