@@ -1,28 +1,30 @@
-body.dashboard-page {
-    background-image: url('../assets/CreateAccount.jpeg');
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+    background-image: url('../assets/Dashboard.jpeg'); /* Add a background image */
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    /* Ensure full height */
-    min-height: 100vh;
+    background-repeat: no-repeat;  
 }
-
 /* Dashboard Header */
 .dashHeader {
-    background-color: rgba(255, 255, 255, 0.85);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.358);
     padding: 15px 30px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    width: 100%;
+    margin-bottom: 100px;
+    width: 200%;
     max-width: 900px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .dashHeader h1 {
@@ -37,6 +39,7 @@ body.dashboard-page {
     color: white; 
     border: none; 
     padding: 12px 25px; 
+    white-space: nowrap;    
     border-radius: 30px; 
     font-size: 1rem; 
     cursor: pointer; 
@@ -99,13 +102,13 @@ body.dashboard-page {
 
 /* Separate Sections with a Bar Line */
 .TodayExercise + .TodayNutrition {
-    border-top: 2px solid #007bff; /* Adds a separation line */
-    margin-top: 25px; /* Additional spacing from the above element */
+    border-top: 2px solid #007bff;
+    margin-top: 25px; 
 }
 
 /* Adjusting the margin to incorporate the title box */
 .TodayExercise, .TodayNutrition {
-    margin-top: 35px; /* Increased margin-top */
+    margin-top: 35px; 
 }
 
 

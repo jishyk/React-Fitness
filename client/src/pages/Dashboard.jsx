@@ -59,7 +59,7 @@ const Dashboard = () => {
     };
 
     return (
-        <div>
+        <div className="dashboard-container">
             <div className='dashboard'></div>
             {/* Checks to see if user is logged in using the auth.js in utils,
             if user is logged in, displays welcome message and logout button,
