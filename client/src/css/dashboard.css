@@ -43,6 +43,7 @@ body.dashboard-page {
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16); 
     font-weight: bold; 
+    margin: 10px, 0;
 }
 
 .btn:hover {
@@ -61,6 +62,10 @@ body.dashboard-page {
     margin-bottom: 30px;
     width: 100%;
     max-width: 900px;
+}
+
+.dashSummary > div {
+    margin-bottom: 20px; /* Adds more space between the button sections */
 }
 
 .dashSummary h2 {

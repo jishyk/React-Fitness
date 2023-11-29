@@ -67,13 +67,13 @@ const Dashboard = () => {
             {AuthService.loggedIn() ? (
                 <div>
                     <div className='dashHeader'>
-                        <h1>Welcome {username}</h1>
+                        <h1>Welcome, {username}</h1>
                         <button className="btn btn-lg btn-light m-2" onClick={logout}>
                             Logout
                         </button>
                     </div>
                     <div className='dashSummary'>
-                        <h2>Your Day</h2>
+                        <h2>Daily Information</h2>
                         <div>
                             <button className='btn'
                             onClick={toggleDisplayExercises}>
