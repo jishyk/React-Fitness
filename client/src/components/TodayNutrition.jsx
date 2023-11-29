@@ -86,13 +86,13 @@ const styles = {
 }
 
 const TodayNutrition = ({ username }) => {
-    const { loading, data, error } = useQuery(QUERY_TODAYNUTRITIONS, {
+    const { loading, data, error, refetch } = useQuery(QUERY_TODAYNUTRITIONS, {
         variables: { username },
     });
 
     useEffect(() => {
-        console.log(data);
-    }, [data]);
+        refetch();
+      }, []);
 
     if (loading) {
         return <h3>Loading...</h3>;

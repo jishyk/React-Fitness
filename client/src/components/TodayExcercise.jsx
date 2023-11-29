@@ -86,13 +86,13 @@ const styles = {
 }
 
 const TodayExercise = ({ username }) => {
-    const { loading, data, error } = useQuery(QUERY_TODAYEXERCISES, {
+    const { loading, data, error, refetch } = useQuery(QUERY_TODAYEXERCISES, {
         variables: { username },
     });
 
     useEffect(() => {
-        console.log(data);
-    }, [data]);
+        refetch();
+      }, []);
 
     if (loading) {
         return <h3>Loading...</h3>;
@@ -104,8 +104,9 @@ const TodayExercise = ({ username }) => {
         return <h3>You have no exercises logged yet for today. Add an exercise to get started!</h3>
     }
     console.log(exercises);
-    const workoutEmoji = 127947;
-    const nutritionEmoji = '&#x1f3cb';
+    
+
+
     return (
         <div>
             <h3>Exercises</h3>
