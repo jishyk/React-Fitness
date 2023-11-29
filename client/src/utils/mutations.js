@@ -121,7 +121,7 @@ export const ADD_NUTRITION = gql`
     }
 `;
 
-export const ADD_GOALEXERCISE = gql`
+export const ADD_EXERCISE_GOAL = gql`
     mutation addExerciseGoal($goalExercise: Int!) {
         addExerciseGoal(goalExercise: $goalExercise) {
             _id
@@ -130,7 +130,7 @@ export const ADD_GOALEXERCISE = gql`
     }
 `;
 
-export const ADD_GOALNUTRITION = gql`
+export const ADD_NUTRITION_GOAL = gql`
     mutation addNutritionGoal($goalNutrition: Int!) {
         addNutritionGoal(goalNutrition: $goalNutrition) {
             _id

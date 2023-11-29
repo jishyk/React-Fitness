@@ -103,7 +103,7 @@ const resolvers = {
                         _id: context.user._id,
                     },
                     {
-                    goalExercise,
+                        goalExercise,
                     },
                     {
                         new: true,
@@ -112,18 +112,19 @@ const resolvers = {
             throw AuthenticationError;
         },
         addNutritionGoal: async (parent, { goalNutrition }, context) => {
+            console.log(goalNutrition)
             if (context.user) {
-                const newNutritionGoal = await User.findOneAndUpdate({
-                    goalNutrition
-                },
-                {
-                    $addToSet: { goalNutrition: newNutritionGoal}
-                }
+                return User.findOneAndUpdate(
+                    {
+                        _id: context.user._id,
+                    },
+                    {
+                        goalNutrition,
+                    },
+                    {
+                        new: true,
+                    }
                 );
-                console.log(newNutritionGoal);
-                return {
-                    goalNutrition: newNutritionGoal,
-                }
             }
             throw AuthenticationError;
         },
