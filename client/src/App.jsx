@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import './css/app.css';
 import AddNav from './components/Nav';
 import { Outlet } from 'react-router-dom';
+import Footer from './components/Footer';
 
 // import once created -abel
 // import Header from './components/Header';
@@ -48,7 +49,7 @@ function App() {
           <Outlet />
         </div>
         {/* can add once footer is created -abel */}
-        {/* <Footer />  */}
+        <Footer />
       </div>
     </ApolloProvider>
   );

@@ -206,3 +206,14 @@ welcome-section p {
     background-color: #c8ac43;
 }
 
+.footer {
+    background-color: #333;
+    opacity: 0.8;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
