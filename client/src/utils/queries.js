@@ -109,7 +109,7 @@ export const QUERY_NUTRITION = gql`
     }
 `;
 
-export const QUERY_GOALEXERCISE = gql`
+export const QUERY_GOAL_EXERCISE = gql`
     query goalExercise($username: String!) {
         goalExercise(username: $username) {
             goalExercise
@@ -117,7 +117,7 @@ export const QUERY_GOALEXERCISE = gql`
     }
 `;
 
-export const QUERY_GOALNUTRITION = gql`
+export const QUERY_GOAL_NUTRITION = gql`
     query goalNutrition($username: String!) {
         goalNutrition(username: $username) {
             goalNutrition
