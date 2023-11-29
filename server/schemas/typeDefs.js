@@ -61,7 +61,8 @@ const typeDefs = gql`
     nutritions: [Nutrition]
     nutrition(_id: ID!): Nutrition
     fitEvents: [FitEvent]
-    todayFitEvents(_id: ID!): [FitEvent]
+    todayExercises(username: String!): [Exercise]
+    todayNutritions(username: String!): [Nutrition]
     fitEvent(_id: ID!): FitEvent
     goalExercise(username: String!): User
     goalNutrition(username: String!): User

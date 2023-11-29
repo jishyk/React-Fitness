@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_NUTRITIONS } from '../utils/queries';
+import { QUERY_TODAYNUTRITIONS } from '../utils/queries';
 
 const styles = {
     TempContainer: {
@@ -84,8 +85,10 @@ const styles = {
     },
 }
 
-const TodayNutrition = () => {
-    const { loading, data, error } = useQuery(QUERY_NUTRITIONS);
+const TodayNutrition = ({ username }) => {
+    const { loading, data, error } = useQuery(QUERY_TODAYNUTRITIONS, {
+        variables: { username },
+    });
 
     useEffect(() => {
         console.log(data);
@@ -95,7 +98,7 @@ const TodayNutrition = () => {
         return <h3>Loading...</h3>;
     }
 
-    const nutritions = data?.nutritions || [];
+    const nutritions = data?.todayNutritions || [];
 
     if (!nutritions.length) {
         return <h3>You have not logged any calories yet today. Add a nutrition to get started!</h3>
