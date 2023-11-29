@@ -24,7 +24,6 @@ const Dashboard = () => {
     const { loading, error, data } = useQuery(QUERY_ME);
     const [displayExercises, setDisplayExercises] = useState(false);
     const [displayNutritions, setDisplayNutritions] = useState(false);
-
     const logout = (event) => {
         AuthService.logout();
     };
@@ -49,9 +48,8 @@ const Dashboard = () => {
     // const nutrition = user.nutrition;
     const workoutGoal = user.goalExercise;
     const nutritionGoal = user.goalNutrition;
-    console.log(nutritionGoal);
-    console.log(workoutGoal);
-    
+
+
 
     const toggleDisplayExercises = () => {
         setDisplayExercises(!displayExercises);
@@ -60,11 +58,9 @@ const Dashboard = () => {
         setDisplayNutritions(!displayNutritions);
     };
 
-
-
-
     return (
         <div>
+            <div className='dashboard'></div>
             {/* Checks to see if user is logged in using the auth.js in utils,
             if user is logged in, displays welcome message and logout button,
             if user not logged in, displays message. */}
@@ -91,13 +87,10 @@ const Dashboard = () => {
                             onClick={toggleDisplayNutritions}>
                                 {displayNutritions ? "Hide Nutrition" : "Show Nutrition"}
                             </button>
-                            {displayNutritions && <TodayNutrition
-                            username={username} goalNutrition={goalNutrition}/>}
-                           
-                        
-                       
-                        
+                            {displayNutritions && <TodayNutrition 
+                            username={username}goalNutrition={goalNutrition}/>}
                         </div>
+
                     </div>
                 </div>
 
@@ -110,4 +103,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

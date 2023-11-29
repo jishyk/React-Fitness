@@ -5,27 +5,60 @@ body {
 }
 
 nav {
-    background-color: #333;
-    color: white;
-    float: right;
-    margin-right: 100px;
+    position: absolute; /* or fixed, depending on your layout */
+    top: 0; /* Adjust as needed */
+    right: 0; /* Align to the right corner */
+    z-index: 1000; /* To ensure it's above other content */
+    /* Other styling as required */
 }
 
 .dropDown {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
+    display: inline-block; /* Aligns dropdown with other inline elements */
+    cursor: pointer; /* Changes cursor to pointer to indicate it's clickable */
+    /* Additional styling if needed */
 }
-  
+
 .dropDownContent {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 140px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 5px 5px;
-    z-index: 1;
+    display: none; /* Initially hide dropdown content */
+    position: absolute; /* Position it absolutely within the relative nav */
+    right: 0; /* Aligns dropdown to the right */
+    background-color: #f9f9f954; /* Background color for dropdown */
+    min-width: 140px; /* Minimum width of dropdown */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.698); /* Shadow for dropdown */
+    z-index: 1; /* Ensure dropdown is above other elements */
+    border-radius:20px; /* Optional: Rounded corners for dropdown */
+    /* Additional styling if needed */
 }
+
+.dropDown.active .dropDownContent {
+    display: block; /* Display dropdown content when active */
+}
+
+/* Style for list items in dropdown */
+.dropDownContent ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropDownContent ul li {
+    padding: 8px 12px; /* Padding for each list item */
+    cursor: pointer; /* Change cursor to pointer for list items */
+}
+
+/* Optional: Add hover effect for list items */
+.dropDownContent ul li:hover {
+    background-color: #ddd;
+}
+
+
+.dropDown span.fas.fa-bars {
+    font-size: 40px; /* Adjust the size as needed */
+    color: #333; /* Adjust the color as needed */
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+    /* Additional styling as needed */
+}
+
 
 .home-container {
     display: flex;
@@ -120,14 +153,6 @@ welcome-section p {
     width: 300px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.form-group {
-    margin-bottom: 15px;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
