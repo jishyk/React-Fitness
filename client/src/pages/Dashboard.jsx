@@ -75,18 +75,18 @@ const Dashboard = () => {
                     <div className='dashSummary'>
                         <h2>Your Day</h2>
                         <div>
-                            <button
+                            <button className='btn'
                             onClick={toggleDisplayExercises}>
                                 {displayExercises ? "Hide Exercises" : "Show Exercises"}
-                                </button>
+                                </button> 
                             {displayExercises && <TodayExercise 
                             username={username} workoutGoal={workoutGoal}/>}
                         </div>
                         <div>
-                            <button
+                            <button className='btn'
                             onClick={toggleDisplayNutritions}>
                                 {displayNutritions ? "Hide Nutrition" : "Show Nutrition"}
-                            </button>
+                            </button> 
                             {displayNutritions && <TodayNutrition 
                             username={username} nutritionGoal={nutritionGoal}/>}
                         </div>
