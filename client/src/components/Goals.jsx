@@ -45,12 +45,14 @@ const GoalEntry = () => {
                  },
             });
             console.log("Goal added successfully:", data);
+            window.alert("Exercise Goal added successfully!");
 
             setFormState({ goalExercise: '' });
 
             // Auth.login(data.addAchievement.token);
         } catch (e) {
             console.error(e);
+            window.alert("Exercise Goal not added successfully. Please try again.");
         }
     };
 
@@ -64,11 +66,13 @@ const GoalEntry = () => {
                  },
             });
             console.log("Goal added successfully:", data2);
+            window.alert("Nutrition Goal added successfully!");
 
             // Auth.login(data.addAchievement.token);
             setNutritionState({ goalNutrition: '' });
         } catch (e) {
             console.error(e);
+            window.alert("Nutrition Goal not added successfully. Please try again.");
         }
     };
     
