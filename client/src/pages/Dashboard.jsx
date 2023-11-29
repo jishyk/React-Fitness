@@ -83,14 +83,16 @@ const Dashboard = () => {
                             onClick={toggleDisplayExercises}>
                                 {displayExercises ? "Hide Exercises" : "Show Exercises"}
                                 </button>
-                            {displayExercises && <TodayExercise />}
+                            {displayExercises && <TodayExercise 
+                            username={username}/>}
                         </div>
                         <div>
                             <button
                             onClick={toggleDisplayNutritions}>
                                 {displayNutritions ? "Hide Nutrition" : "Show Nutrition"}
                             </button>
-                            {displayNutritions && <TodayNutrition />}
+                            {displayNutritions && <TodayNutrition
+                            username={username} />}
                            
                         
                        
