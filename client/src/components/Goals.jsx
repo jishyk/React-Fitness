@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import "../css/add-goal.css";
 import { useState } from 'react';
 import { useMutation } from "@apollo/client";
-import { UPDATE_EXERCISE_GOAL } from '../utils/mutations';
+import { ADD_GOALEXERCISE } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const AddGoal = () => {
+const GoalEntry = () => {
     const [formState, setFormState] = useState({
         goalExercise: '',
     });
 
-    const [addAchievement, { error, data }] = useMutation(UPDATE_EXERCISE_GOAL);
+    const [addAchievement, { error, data }] = useMutation(ADD_GOALEXERCISE);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -24,18 +24,21 @@ const AddGoal = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
+        console.log(formState.goalExercise)
         try {
             const { data } = await addAchievement({
-                variables: { ...formState },
+                variables: {
+                    goalExercise: parseInt(formState.goalExercise)
+                 },
             });
             console.log("Goal added successfully:", data);
 
-            Auth.login(data.addAchievement.token);
+            // Auth.login(data.addAchievement.token);
         } catch (e) {
             console.error(e);
         }
     };
+    
 
     return (
         <div id="add-goal" className="goal-container">
@@ -46,10 +49,11 @@ const AddGoal = () => {
                         className="form-group"
                         placeholder="Add Goal"
                         name="goalExercise"
-                        type="text"
+                        type="number"
                         value={formState.goalExercise}
                         onChange={handleChange}
                     />
+                     <button type="submit" className="add-goal-button">Add Goal</button>
                 </form>
                 <div className="form-group">
                     <Link to="/dashboard" className="back-to-dashboard-button">Back to Dashboard</Link>
@@ -59,4 +63,4 @@ const AddGoal = () => {
     );
 };
 
-export default AddGoal;
+export default GoalEntry;

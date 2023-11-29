@@ -109,6 +109,22 @@ export const QUERY_NUTRITION = gql`
     }
 `;
 
+export const QUERY_GOALEXERCISE = gql`
+    query goalExercise($username: String!) {
+        goalExercise(username: $username) {
+            goalExercise
+        }
+    }
+`;
+
+export const QUERY_GOALNUTRITION = gql`
+    query goalNutrition($username: String!) {
+        goalNutrition(username: $username) {
+            goalNutrition
+        }
+    }
+`;
+
 // export const QUERY_FITEVENTS = gql`
 //     query fitEvents {
 //         fitEvents {

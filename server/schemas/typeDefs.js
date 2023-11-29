@@ -63,11 +63,13 @@ const typeDefs = gql`
     fitEvents: [FitEvent]
     todayFitEvents(_id: ID!): [FitEvent]
     fitEvent(_id: ID!): FitEvent
+    goalExercise(username: String!): User
+    goalNutrition(username: String!): User
     me: User
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!, goalExercise: Int!, goalNutrition: Int!): Auth
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
     updateUser(userId: ID!, username: String!, email: String!): User
@@ -84,6 +86,8 @@ const typeDefs = gql`
     updateNutrition(_id: ID!, name: String!, calories: Int!): Nutrition
     removeExercise(_id: ID!): Exercise
     removeNutrition(_id: ID!): Nutrition
+    addExerciseGoal(goalExercise: Int!): User
+    addNutritionGoal(goalNutrition: Int!): User
   }
 `;
 

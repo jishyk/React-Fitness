@@ -12,6 +12,8 @@ const CreateAccount = () => {
         username: '',
         email: '',
         password: '',
+        goalExercise: '',
+        goalNutrition: '',
     });
 
     // define a useMutation hook for executing the ADD_USER mutation
@@ -34,7 +36,13 @@ const CreateAccount = () => {
 
         try {
             const { data } = await addUser({
-                variables: { ...formState },
+                variables: {
+                    username: formState.username,
+                    email: formState.email,
+                    password: formState.password,
+                    goalExercise: parseInt(formState.goalExercise),
+                    goalNutrition: parseInt(formState.goalNutrition),
+                 },
             });
 
             Auth.login(data.addUser.token);
@@ -70,6 +78,22 @@ const CreateAccount = () => {
                     name="password"
                     type="text"
                     value={formState.password}
+                    onChange={handleChange}
+                    />
+                    <input
+                    className="form-group"
+                    placeholder="Your exercise goal"
+                    name="goalExercise"
+                    type="number"
+                    value={formState.goalExercise}
+                    onChange={handleChange}
+                    />
+                    <input
+                    className="form-group"
+                    placeholder="Your nutrition goal"
+                    name="goalNutrition"
+                    type="number"
+                    value={formState.goalNutrition}
                     onChange={handleChange}
                     />
                     <button
