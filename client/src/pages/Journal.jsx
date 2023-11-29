@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import "../css/journal.css"
 import { useQuery } from '@apollo/client';
 import { QUERY_EXERCISES } from '../utils/queries';
 
 const styles = {
-    TempContainer: {
+    journalContainer: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -16,12 +17,12 @@ const styles = {
         fontSize: 14,
         borderRadius: 8,
     },
-    TempRecord: {
+    journalBox: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        background: '#3498db',
+        background: '#fff',
         color: '#333',
         height: '70%',
         width: '100%',
@@ -74,12 +75,12 @@ const Journal = () => {
     const workoutEmoji = 127947;
     const nutritionEmoji = '&#x1f3cb';
     return (
-        <div>
-            <h3>Journal</h3>
-            <div style={styles.TempContainer}>
+        <div className="journalContainer">
+            <h3 className="journalBox">Journal</h3>
+            <div style={styles.journalBox}>
                 {exercises &&
                     exercises.map((exercise) => (
-                        <div style={styles.TempRecord} key={exercise._id} className="card mb-3">
+                        <div key={exercise._id} className="journalBox card mb-3">
                             <div style={styles.TypeFieldLarge}>{exercise.createdAt}</div>
                             <div style={styles.TempFieldSmall}>Workout Name: {exercise.name}</div>
                             <div style={styles.TempFieldSmall}>Exercise: {exercise.exercise}</div>
