@@ -85,7 +85,7 @@ const styles = {
     },
 }
 
-const TodayExercise = ({ username }) => {
+const TodayExercise = ({ username, workoutGoal }) => {
     const { loading, data, error, refetch } = useQuery(QUERY_TODAYEXERCISES, {
         variables: { username },
     });
@@ -104,7 +104,17 @@ const TodayExercise = ({ username }) => {
         return <h3>You have no exercises logged yet for today. Add an exercise to get started!</h3>
     }
     console.log(exercises);
-    
+    let calBurnedTotal = 0;
+    for (let i = 0; i < exercises.length; i++) {
+        calBurnedTotal += exercises[i].caloriesBurned;
+    }
+    console.log(calBurnedTotal);
+
+    let goalExerciseReached =  false;
+    if (calBurnedTotal >= { workoutGoal }) {
+        goalExerciseReached = true;
+    }
+    console.log(goalExerciseReached)
 
 
     return (

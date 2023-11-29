@@ -84,7 +84,7 @@ const Dashboard = () => {
                                 {displayExercises ? "Hide Exercises" : "Show Exercises"}
                                 </button>
                             {displayExercises && <TodayExercise 
-                            username={username}/>}
+                            username={username} workoutGoal={workoutGoal}/>}
                         </div>
                         <div>
                             <button
@@ -92,7 +92,7 @@ const Dashboard = () => {
                                 {displayNutritions ? "Hide Nutrition" : "Show Nutrition"}
                             </button>
                             {displayNutritions && <TodayNutrition
-                            username={username} />}
+                            username={username} goalNutrition={goalNutrition}/>}
                            
                         
                        
