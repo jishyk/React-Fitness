@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_EXERCISES } from '../utils/queries';
 
 const styles = {
-    fitEventsContainer: {
+    TempContainer: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -16,7 +16,7 @@ const styles = {
         fontSize: 14,
         borderRadius: 8,
     },
-    fitEventRecord: {
+    TempRecord: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -32,7 +32,7 @@ const styles = {
         border: '1px solid #000',
         borderRadius: 8,
     },
-    fitEventFieldSmall: {
+    TempFieldSmall: {
         height: '100%',
         width: '12%',
         fontSize: 14,
@@ -40,7 +40,7 @@ const styles = {
         marginLeft: 10,
         marginRight: 10,
     },
-    fitEventFieldLarge: {
+    TempFieldLarge: {
         height: '100%',
         width: '18%',
         fontSize: 14,
@@ -48,7 +48,7 @@ const styles = {
         marginLeft: 10,
         marginRight: 10,
     },
-    fitEventFieldNull: {
+    TempFieldNull: {
         height: '100%',
         width: 0,
     },
@@ -65,28 +65,27 @@ const Journal = () => {
         return <h3>Loading...</h3>;
     }
 
-    const fitEvents = data?.fitEvents || [];
+    const exercises = data?.exercises || [];
 
-    if (!fitEvents.length) {
+    if (!exercises.length) {
         return <h3>You have nothing in your journal. Get started on your fitness journey by adding a nutrition or an exercise.</h3>
     }
-    console.log(fitEvents);
+    console.log(exercises);
     const workoutEmoji = 127947;
     const nutritionEmoji = '&#x1f3cb';
     return (
         <div>
             <h3>Journal</h3>
-            <div style={styles.fitEventsContainer}>
-                {fitEvents &&
-                    fitEvents.map((fitEvent) => (
-                        <div style={styles.fitEventRecord} key={fitEvent._id} className="card mb-3">
-                            <div style={styles.fitEventFieldLarge}>{fitEvent.createdAt}</div>
-                            <div style={styles.fitEventFieldSmall}>{fitEvent.fitEventType}{String.fromCharCode(workoutEmoji)}</div>
-                            {fitEvent.goalReachedExercise ? <div style={styles.fitEventFieldSmall}>Green emoji - You Rock!</div> : <div style={styles.fitEventFieldSmall}>Red emoji - Almost There!</div>}
-                            {fitEvent.exerciseId ? <div style={styles.fitEventFieldSmall}>Workout Name: {fitEvent.exerciseId.name}</div> : <div style={styles.fitEventFieldNull}></div>}
-                            {fitEvent.exerciseId ? <div style={styles.fitEventFieldSmall}>Calories Burned: {fitEvent.exerciseId.caloriesBurned}</div> : <div style={styles.fitEventFieldNull}></div>}
-                            {fitEvent.nutritionId ? <div style={styles.fitEventFieldSmall}>Food: {fitEvent.nutritionId.name}</div> : <div style={styles.fitEventFieldNull}></div>}
-                            {fitEvent.nutritionId ? <div style={styles.fitEventFieldSmall}>Calories Consumed:{fitEvent.nutritionId.calories}</div> : <div style={styles.fitEventFieldNull}></div>}
+            <div style={styles.TempContainer}>
+                {exercises &&
+                    exercises.map((exercise) => (
+                        <div style={styles.TempRecord} key={exercise._id} className="card mb-3">
+                            <div style={styles.TypeFieldLarge}>{exercise.createdAt}</div>
+                            <div style={styles.TempFieldSmall}>Workout Name: {exercise.name}</div>
+                            <div style={styles.TempFieldSmall}>Exercise: {exercise.exercise}</div>
+                            <div style={styles.TempFieldSmall}>Workout Length: {exercise.workoutLength}</div>
+                            <div style={styles.TempFieldSmall}>Calories Burned: {exercise.caloriesBurned}</div>
+                            <div style={styles.TempFieldSmall}>Calories Burned: {exercise.feeling}</div>
                         </div>
 
                     ))}
