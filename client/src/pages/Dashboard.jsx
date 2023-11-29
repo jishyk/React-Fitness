@@ -91,6 +91,10 @@ const Dashboard = () => {
                                 {displayNutritions ? "Hide Nutrition" : "Show Nutrition"}
                             </button>
                             {displayNutritions && <TodayNutrition />}
+                           
+                        
+                       
+                        
                         </div>
                     </div>
                 </div>
