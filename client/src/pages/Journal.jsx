@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "../css/journal.css"
 import { useQuery } from '@apollo/client';
-import { QUERY_EXERCISES } from '../utils/queries';
+import { QUERY_ME } from '../utils/queries';
 
 const styles = {
     journalContainer: {
@@ -62,7 +62,7 @@ const styles = {
 }
 
 const Journal = () => {
-    const { loading, data, error } = useQuery(QUERY_EXERCISES);
+    const { loading, data, error } = useQuery(QUERY_ME);
 
     useEffect(() => {
         console.log(data);
@@ -71,8 +71,8 @@ const Journal = () => {
     if (loading) {
         return <h3>Loading...</h3>;
     }
-
-    const exercises = data?.exercises || [];
+    const user = data && data.me;
+    const exercises = user.exercises || [];
 
     if (!exercises.length) {
         return <h3>You have nothing in your journal. Get started on your fitness journey by adding a nutrition or an exercise.</h3>
