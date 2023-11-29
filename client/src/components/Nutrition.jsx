@@ -37,6 +37,7 @@ const AddNutrition = () => {
                  },
             });
             console.log("Nutrition added successfully:", data);
+            window.alert("Nutrition added successfully!");
 
             setFormState({ name: '', calories: '' }); // Reset form
 
@@ -44,6 +45,7 @@ const AddNutrition = () => {
             // Auth.login might not be necessary here unless it's related to authentication
         } catch (e) {
             console.error(e);
+            window.alert("Nutrition not added successfully. Please try again.");
         }
     };
     const handleChange = (event) => {

@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    flex-direction: column;
+    padding: 30px;
     min-height: 100vh;
     background-image: url('../assets/journal2.png');
     background-size: cover;
@@ -21,7 +22,7 @@
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    max-width: 550px;
+    max-width: 1050px;
     width: 100%;
     text-align: center;
     animation: popIn 0.6s ease-out;

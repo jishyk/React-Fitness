@@ -26,11 +26,11 @@ const userSchema = new Schema({
   },
   goalExercise: {
     type: Number,
-    required: true
+    required: false
   },
   goalNutrition: {
     type: Number,
-    required: true
+    required: false
   },
   exercises: [
     {

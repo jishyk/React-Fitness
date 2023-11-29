@@ -45,11 +45,13 @@ const AddExercise = () => {
                 },
             });
             console.log("Exercise added successfully:", data);
+            window.alert("Exercise added successfully!");
 
 
             setExerciseInfo({ name: '', exercise: '', workoutLength: '', caloriesBurned: '', feeling: '' });
         } catch (e) {
             console.error(e);
+            window.alert("Exercise not added successfully. Please try again.");
         }
     };
 
