@@ -81,7 +81,7 @@ const Journal = () => {
     // const workoutEmoji = 127947;
     // const nutritionEmoji = '&#x1f3cb';
 
-    const last10Exercises = exercises.slice(-10);
+    const last10Exercises = exercises.slice(-10).reverse();
     return (
         <div className="journalContainer">
             <h3 className="journalBox">Journal</h3>
