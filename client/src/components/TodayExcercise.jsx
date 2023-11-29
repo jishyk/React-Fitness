@@ -85,14 +85,14 @@ const styles = {
     },
 }
 
-const TodayExercise = ({ username }) => {
+const TodayExercise = ({ username, workoutGoal }) => {
     const { loading, data, error, refetch } = useQuery(QUERY_TODAYEXERCISES, {
         variables: { username },
     });
 
     useEffect(() => {
         refetch();
-      }, []);
+    }, []);
 
     if (loading) {
         return <h3>Loading...</h3>;
@@ -104,18 +104,42 @@ const TodayExercise = ({ username }) => {
         return <h3>You have no exercises logged yet for today. Add an exercise to get started!</h3>
     }
     console.log(exercises);
-    
+    let calBurnedTotal = 0;
+    for (let i = 0; i < exercises.length; i++) {
+        calBurnedTotal += exercises[i].caloriesBurned;
+    }
+    console.log(calBurnedTotal);
+    let calToGo = workoutGoal - calBurnedTotal;
+    console.log(calToGo);
+
+    let goalExerciseReached = false;
+    if (calBurnedTotal >= workoutGoal) {
+        goalExerciseReached = true;
+    };
+    console.log(workoutGoal);
+    console.log(goalExerciseReached);
 
 
     return (
         <div>
             <h3>Exercises</h3>
+            {!workoutGoal ? (<div style={styles.TempStatusContainer}>
+            <div>SET A GOAL TO TRACK YOUR PROGRESS</div>
+                </div>) : (
             <div style={styles.TempStatusContainer}>
-            <div>STATUS</div>
-            <div style={styles.TempStatusIndicator}>Placeholder for success or fail emoji</div>
-            <div>Placeholder for calories burned</div>
-            <div>Placeholder for calories burned goal</div>
-                </div>
+                <div>STATUS</div>
+                {goalExerciseReached ? (
+                    <div style={styles.TempStatusIndicator}>SUCCESS</div>
+                ) : (
+                    <div style={styles.TempStatusIndicator}>FAIL</div>
+                )}
+                {goalExerciseReached ? (
+                    <div></div>
+                ) : (
+                    <div>Calories to go: {calToGo}</div>
+                )}
+                <div> Calories: {calBurnedTotal}/{workoutGoal}</div>
+                </div>)}
             <div style={styles.TempContainer}>
                 {exercises &&
                     exercises.map((exercise) => (

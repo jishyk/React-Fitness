@@ -85,7 +85,7 @@ const styles = {
     },
 }
 
-const TodayNutrition = ({ username }) => {
+const TodayNutrition = ({ username, nutritionGoal }) => {
     const { loading, data, error, refetch } = useQuery(QUERY_TODAYNUTRITIONS, {
         variables: { username },
     });
@@ -104,15 +104,40 @@ const TodayNutrition = ({ username }) => {
         return <h3>You have not logged any calories yet today. Add a nutrition to get started!</h3>
     }
     console.log(nutritions);
+    let calConsumedTotal = 0;
+    for (let i = 0; i < nutritions.length; i++) {
+        calConsumedTotal += nutritions[i].calories;
+    }
+    console.log(calConsumedTotal);
+    let caloriesLeft = nutritionGoal - calConsumedTotal;
+    console.log(caloriesLeft);
+
+    let goalCaloriesReached = false;
+    if (nutritionGoal >= calConsumedTotal) {
+        goalCaloriesReached = true;
+    };
+    console.log(nutritionGoal);
+    console.log(goalCaloriesReached);
     return (
         <div>
             <h3>Nutritions</h3>
+            {!nutritionGoal ? (<div style={styles.TempStatusContainer}>
+            <div>SET A GOAL TO TRACK YOUR PROGRESS</div>
+                </div>) : (
             <div style={styles.TempStatusContainer}>
             <div>STATUS</div>
-            <div style={styles.TempStatusIndicator}>Placeholder for success or fail emoji</div>
-            <div>Placeholder for calories eaten</div>
-            <div>Placeholder for max calories goal</div>
-                </div>
+                {goalCaloriesReached ? (
+                    <div style={styles.TempStatusIndicator}>SUCCESS</div>
+                ) : (
+                    <div style={styles.TempStatusIndicator}>FAIL</div>
+                )}
+                {goalCaloriesReached ? (
+                    <div></div>
+                ) : (
+                    <div>Calories over: {caloriesLeft}</div>
+                )}
+                <div> Calories: {calConsumedTotal}/{nutritionGoal}</div>
+                </div>)}
             <div style={styles.TempContainer}>
                 {nutritions &&
                     nutritions.map((nutrition) => (
