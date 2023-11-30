@@ -16,6 +16,7 @@ import "../css/add-nutrition.css"; // Update CSS path as needed
 import { useMutation } from "@apollo/client";
 import { ADD_NUTRITION } from '../utils/mutations'; // Update mutation import
 import AuthService from '../utils/auth';
+import AddNav from "./Nav";
 
 const AddNutrition = () => {
     const [formState, setFormState] = useState({
@@ -59,6 +60,37 @@ const AddNutrition = () => {
     return (
         <div id="add-nutrition" className="nutrition-container">
             <div className="add-nutrition-box">
+                     <style>
+                        {`
+                            @media (max-width: 962px) {
+                                .navForNutrition {
+                                    position: relative;
+                                    left: 0;
+                                    top: 30px;
+                                    margin-left: -20px;
+                    
+                                }
+                                .dropDownContent {
+                                    height: 15%;
+                                    white-space: nowrap;
+                                    overflow-y: scroll;
+                                }
+
+                            }
+                            @media (max-width: 612px) {
+                                .navForNutrition {
+                                    position: relative;
+                                    left: -40px;
+                                    margin-left: 20px;
+                                }
+
+                            }
+                        `}
+
+                    </style>
+                <div className="navForNutrition">
+                    <AddNav />
+                </div>
                 <h2>Add Nutrition</h2>
                 <form onSubmit={handleFormSubmit}>
                     <input 
