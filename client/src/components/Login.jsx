@@ -213,6 +213,7 @@ const Login = () => {
             <div>
                 <h2>Login</h2>
                 <form onSubmit={handleFormSubmit}>
+                    <div className="login-container"></div>
                     <input
                         type="text"
                         name="email"
@@ -227,7 +228,8 @@ const Login = () => {
                         onChange={handleChange}
                         placeholder="Enter your password"
                     />
-                    <button type="submit">Login</button>
+                    <button className="button-login">Login</button>
+
                 </form>
                 {error && <p>Error: {error.message}</p>}
             </div>

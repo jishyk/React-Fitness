@@ -113,7 +113,7 @@ welcome-section p {
     margin: 0 10px;
 }
 /* Enhanced button styles */
-.signup-button, .login-button {
+.signup-button{
     background-color: #0090c1;  /* Consistent color for both buttons */
     color: white; /* White text for better contrast */
     padding: 15px 30px; /* Comfortable padding */
@@ -132,11 +132,33 @@ welcome-section p {
     background-color: #d4af37;
 }
 
-.login-button {
-    background-color: #808080;
+/* Slick login button style */
+.button-login {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #d4af37;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 2px 4px 0 rgba(1, 9, 17, 0.5);
+    transition: all 0.3s ease;
 }
 
-.signup-button:hover, .login-button:hover {
+.button-login:hover {
+    background-color: #3fb300;
+    box-shadow: 0 4px 8px 0 rgba(0,123,255,.5);
+    transform: translateY(-3px);
+}
+
+.button-login:active {
+    background-color: #004085;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+
+
+.signup-button:hover{
     background-color: #007fad; 
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25); 
     transform: translateY(-2px); 
@@ -196,7 +218,7 @@ welcome-section p {
     outline: none;
 }
 
-.signup-button, .login-button {
+.signup-button{
     margin-top: 10px;
     width: 50%;
     text-align: center;
