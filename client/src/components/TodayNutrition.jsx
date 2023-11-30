@@ -133,11 +133,15 @@ const TodayNutrition = ({ username, nutritionGoal }) => {
     return (
         <div className="entryBox">
             {/* <h3>Nutritions</h3> */}
-            {!nutritionGoal ? (<div className="entryBox">
+            {!nutritionGoal ? (<div style={styles.TempStatusContainer}>
+                <div className="entryBox">
                 <h3>SET A GOAL TO TRACK YOUR PROGRESS</h3>
+            </div>
             </div>) : (
+                <div style={styles.TempStatusContainer}>
                 <div className="entryBox">
                     {/* <h3>STATUS</h3> */}
+                    </div>
                     {goalCaloriesReached ? (
                         <div className="TempStatusIndicator entryBox">SUCCESS</div>
                     ) : (
