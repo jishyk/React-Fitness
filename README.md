@@ -1,10 +1,8 @@
 # reactFitness
 
-Projects have played a key role in your journey to becoming a full-stack web developer. As you apply for development jobs, your portfolio is absolutely vital to opening doors to opportunities. Your portfolio showcases high-quality deployed examples of your work, and you can use your finished projects for that very purpose.
+Welcome to reactFitness – where innovation meets your fitness goals! We are thrilled to introduce you to a groundbreaking fitness tech solution crafted by our passionate team of developers – Rick Cooke, Abel Soto, Joshua King, and Tanner Norris. Get ready to embark on a transformative fitness experience like never before!
 
-This project is a fantastic opportunity to show employers your collaborative skills and coding abilities, especially in the context of a scalable, user-focused MERN app. Remember that employers want to see what you can do, but they also want to see how you work with other developers. The more examples of deployed collaborative work you have in your portfolio, the more likely you are to get an interview and a job.
-
-## The Pitch
+## The Business Pitch
 
 * Introduction
     * Good evening! I'm thrilled to present to you a game-changer in the fitness tech space – reactFitness! My name is Tanner Norris, alongside my fellow developers. Rick Cooke, Abel Soto and Joshua King. I invite you to invest in a revolution that will redefine how people approach their fitness journey.
@@ -44,171 +42,52 @@ This project is a fantastic opportunity to show employers your collaborative ski
 
 ## Development Team
 
-* Rick Cooke
-* Joshua King
-* Abel Soto
-* Tanner Norris
+* reactFitness team:
+
+    * Rick Cooke (Backend Development Team)
+    * Joshua King (Frontend Development Team)
+    * Abel Soto (Backend Development Team)
+    * Tanner Norris (Frontend Development Team)
 
 ## Links
 
-* 
+* https://pure-atoll-27810-a712bf2f0891.herokuapp.com/
 * https://github.com/jishyk/React-Fitness
 
 ## Sources
 
+Sources that were utilized to develop this top level fitness application were as such. Youtube, Google, Reddit, Xpert Learning Assistant, coding blogs, w3schools, books on coding, course exercises, previous challenges, reaching out to faculty for support, tutoring sessions, and many many discord meetings after school hours. Among all the sources this application took a lot of time, hard work, patience and communication to complete. In the end, we as a team were able to create an application from the ground up. We hope you enjoy what we have created in reactFitness.
+
 ## Challenges
+
+Our development journey with reactFitness was marked by several challenges, each of which our dedicated team tackled head-on to ensure a robust and seamless application. One significant hurdle involved establishing communication between the client side and the backend. Overcoming this challenge required meticulous coordination and troubleshooting to ensure the smooth flow of information between the user interface and the server.
+
+Another key obstacle we encountered was the integration of mutations and queries with the Apollo server. Fine-tuning this process demanded a deep understanding of GraphQL and Apollo to ensure that data manipulations and retrievals functioned seamlessly. Our team's perseverance and collaborative problem-solving were pivotal in resolving these issues, resulting in an efficient and responsive data flow within the application.
+
+Additionally, implementing JWT (JSON Web Token) authentication posed its own set of challenges. Safeguarding user data and ensuring secure authentication required careful consideration of token generation, validation, and expiration. Our team worked diligently to implement JWT successfully, enhancing the overall security and reliability of reactFitness.
+
+By overcoming these challenges, we not only strengthened our technical expertise but also refined the user experience, delivering a robust and reliable fitness application that meets the expectations of our users.
 
 ## Victories
 
+* Operational JWT Authentication
+    
+    * One of our major triumphs in the development of reactFitness was the successful implementation of JWT (JSON Web Token) authentication. Enabling users to securely log in and authenticate their identity was a crucial milestone. This achievement not only ensures data security but also provides a seamless and reliable login experience for our users.
+
+* Seamless Data Flow with Apollo and MongoDB
+
+    * Achieving a smooth integration between our client-side mutations, Apollo server, and MongoDB was a significant accomplishment. Our team worked diligently to establish a robust data flow, allowing user records to be efficiently stored in MongoDB through Apollo. This victory enhances the reliability and performance of reactFitness, ensuring that user interactions are accurately recorded and seamlessly reflected in the backend.
+
+* Solid Teamwork and Communication
+
+    * Building a successful application isn't just about coding—it's about collaboration and communication. Our team's ability to work cohesively and communicate effectively played a pivotal role in overcoming challenges and achieving milestones. From problem-solving sessions to regular updates, our teamwork was instrumental in navigating the complexities of development and ensuring a successful outcome.
+
+* Building a Pride-Worthy Web Application
+
+    * From inception to implementation, the journey of building reactFitness was a labor of passion and dedication. We take pride in creating a web application from the ground up that not only meets functional requirements but also reflects our commitment to delivering a high-quality product. The result is an application that we, as a team, can confidently stand behind and share with pride. 
+    
+* In summary, these achievements represent the dedication, skill, and collaboration that define the success of reactFitness. We look forward to continued growth and the opportunity to enhance the application further based on user feedback and evolving technologies.
+
 ## Potential Future Developments
 
-## Project Requirements
-
-Your group will use everything you’ve learned throughout this course to create a MERN stack single-page application that works with real-world data to solve a real-world challenge, with a focus on data and user demand. This project will provide you with the best opportunity to demonstrate your problem-solving skills, which employers will want to see during interviews. Once again, the user story and acceptance criteria will depend on the project that you create, but your project must fulfill the following requirements:
-
-* Use React for the front end.
-
-* Use GraphQL with a Node.js and Express.js server.
-
-* Use MongoDB and the Mongoose ODM for the database.
-
-* Use queries and mutations for retrieving, adding, updating, and deleting data.
-
-* Be deployed using Heroku (with data).
-
-* Have a polished UI.
-
-* Be responsive.
-
-* Be interactive (i.e., accept and respond to user input).
-
-* Include authentication (JWT).
-
-* Protect sensitive API key information on the server.
-
-* Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class and id naming conventions, indentation, high-quality comments, etc.).
-
-* Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
-
-### CSS Styling
-
-Instead of using a CSS library like Bootstrap, consider one of the following suggestions:
-
-* Look into the concept of CSS-in-JS, which abstracts CSS to the component level, using JavaScript to describe styles in a declarative and maintainable way. Some popular libraries include [styled-components](https://styled-components.com/) and [Emotion](https://emotion.sh/docs/introduction).
-
-* Try using a component library, such as [Semantic UI](https://semantic-ui.com/), [Chakra UI](https://chakra-ui.com/), or [Ant Design](https://ant.design/).
-
-* Create all the CSS for your application just using CSS.
-
-Ultimately, it doesn't matter which of these options you choose&mdash;it just needs to look professional and be mobile-friendly.
-
-### Payment Platform
-
-Consider integrating the Stripe payment platform. Even if you don’t create an e-commerce application, you could set up your site to accept charitable donations.
-
-### Bonus
-
-Although this is not a requirement for your project, see if you can also implement functionality to meet the minimum requirements of a PWA:
-
-* Uses a web manifest
-
-* Uses a service worker for offline functionality
-
-* Is installable
-
-## Presentation Requirements
-
-Use this [project presentation template](https://docs.google.com/presentation/d/10QaO9KH8HtUXj__81ve0SZcpO5DbMbqqQr4iPpbwKks/edit?usp=sharing) to address the following:
-
-* Elevator pitch: a one minute description of your application
-
-* Concept: What is your user story? What was your motivation for development?
-
-* Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
-
-* Demo: Show your stuff!
-
-* Directions for Future Development
-
-* Links to the deployed application and the GitHub repository. Use the [Guide to Deploy with Heroku and MongoDB Atlas](https://coding-boot-camp.github.io/full-stack/mongodb/deploy-with-heroku-and-mongodb-atlas) on The Full-Stack Blog if you need a reminder on how to deploy to Heroku.
-
-## Grading Requirements
-
-This project is graded based on the following criteria:
-
-### Technical Acceptance Criteria: 25%
-
-* Satisfies the following code requirements:
-
-  * Application uses React for the front end.
-
-  * Application has a GraphQL API with a Node.js and Express.js server, and uses queries and mutations for retrieving, adding, updating, and deleting data.
-
-  * Application uses MongoDB and the Mongoose ODM for the database and protects sensitive API key information on the server.
-
-  * Application includes user authentication using JWT.
-
-### Concept 10%
-
-* Application should be a unique and novel idea.
-
-* Your group should clearly and concisely articulate your project idea.
-
-### Deployment: 20%
-
-* Application deployed at live URL on Heroku and loads with no errors.
-
-* Application GitHub URL submitted.
-
-### Repository Quality: 10%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class and id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains a high-quality README file with description, screenshot, and link to deployed application.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application is responsive.
-
-### Presentation 10%
-
-* Your group should present using a slide deck.
-
-* Every group member should speak during the presentation.
-
-* Your presentation should follow the [Project Presentation Template](https://docs.google.com/presentation/d/10QaO9KH8HtUXj__81ve0SZcpO5DbMbqqQr4iPpbwKks/edit?usp=sharing).
-
-### Collaboration 10%
-
-* There are no major disparities in the number of GitHub contributions between group members.
-
-### Bonus
-
-Fulfilling all three of the following requirements to turn your app into a PWA will add 10 points to your grade. Note that the highest grade you can achieve is still a 100:
-
-* Uses a web manifest
-
-* Uses a service worker for offline functionality
-
-* Is installable
-
-## How to Submit Your MERN Stack Single-Page Application
-
-**Each member of your group** is required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository, with a unique name and a README describing the project.
-
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+As we celebrate our current achievements with functional account creation, seamless login, workout logging, goal tracking, and nutritional recording, we are excited to outline our future development goals. One of our upcoming features includes the addition of macros to nutritional records, providing a more comprehensive view of your dietary intake. We're also gearing up to introduce an actual journal entry field, allowing users to reflect on their day and track personal progress. As a daily dose of inspiration, we plan to display motivational quotes on the dashboard each time a user logs in, fostering a positive mindset for their fitness journey. Looking ahead, our roadmap includes expanding the application's capabilities and integrating memberships for enhanced services and merchandise. We're committed to continuously improving your experience with reactFitness, empowering you on your path to a healthier lifestyle.
