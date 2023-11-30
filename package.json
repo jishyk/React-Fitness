@@ -2,7 +2,7 @@
   "name": "react-fitness",
   "version": "1.0.0",
   "engines": {
-    "npm": "18.17.0"
+    "node": "18.17.0"
   },
   "description": "",
   "main": "server/server.js",
