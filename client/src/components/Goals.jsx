@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useMutation } from "@apollo/client";
 import { ADD_EXERCISE_GOAL, ADD_NUTRITION_GOAL } from '../utils/mutations';
 import Auth from '../utils/auth';
+import AddNav from "./Nav";
 
 const GoalEntry = () => {
     const [formState, setFormState] = useState({
@@ -80,6 +81,37 @@ const GoalEntry = () => {
     return (
         <div id="add-goal" className="goal-container">
             <div className="add-goal-box">
+            <style>
+                        {`
+                            @media (max-width: 962px) {
+                                .navForGoals {
+                                    position: relative;
+                                    left: 0;
+                                    top: 30px;
+                                    margin-left: -20px;
+                    
+                                }
+                                .dropDownContent {
+                                    height: 15%;
+                                    white-space: nowrap;
+                                    overflow-y: scroll;
+                                }
+
+                            }
+                            @media (max-width: 612px) {
+                                .navForGoals {
+                                    position: relative;
+                                    left: -40px;
+                                    margin-left: 20px;
+                                }
+
+                            }
+                        `}
+
+                    </style>
+                <div className="navForGoals">
+                    <AddNav />
+                </div>
                 <h2>Add Goal</h2>
                 <form onSubmit={handleFormSubmit}>
                     <h3>Exercise Goal</h3>

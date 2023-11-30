@@ -15,6 +15,7 @@ import { useState } from 'react';
 import { useMutation } from "@apollo/client";
 import { ADD_EXERCISE } from '../utils/mutations';
 import AuthService from '../utils/auth';
+import AddNav from "./Nav";
 
 
 
@@ -69,6 +70,40 @@ const AddExercise = () => {
     return (
         <div id="add-workout" className="workout-container">
             <div className="add-workout-box">
+            <style>
+                        {`
+                            .navForExercise {
+                                float: left;
+                            }
+                            @media (max-width: 962px) {
+                                .navForExercise {
+                                    position: relative;
+                                    left: 0;
+                                    top: 30px;
+                                    margin-left: -20px;
+                    
+                                }
+                                .dropDownContent {
+                                    height: 125px;
+                                    white-space: nowrap;
+                                    overflow-y: scroll;
+                                }
+
+                            }
+                            @media (max-width: 612px) {
+                                .navForExercise {
+                                    position: relative;
+                                    left: -40px;
+                                    margin-left: 20px;
+                                }
+
+                            }
+                        `}
+
+                    </style>
+                    <div className="navForExercise">
+                        <AddNav />
+                    </div>
                 <h2>Add Workout</h2>
                 <form onSubmit={handleFormSubmit}>
                     <input
