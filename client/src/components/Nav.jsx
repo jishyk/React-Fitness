@@ -19,7 +19,7 @@ const AddNav = () => {
 
     return isLoggedIn ? (
         <nav className={`dropDown ${showDropDown ? 'active' : ''}`} onClick={handleDropDownClick}>
-            <div className="dropdown">
+            <div className="dropdownMenu">
                  <button className="dropbtn">
                 <i className="fas fa-bars" style={{ fontSize: '25px' }}></i> {/* FontAwesome Icon */}
                     </button>
