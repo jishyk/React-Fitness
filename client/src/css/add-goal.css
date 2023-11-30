@@ -91,3 +91,13 @@
     color: #ff7878;
     text-decoration: underline;
 }
+
+p {
+    margin: 0;
+    padding-bottom: 5px;
+}
+
+h3 {
+    margin: 0;
+    padding-bottom: 5px;
+}

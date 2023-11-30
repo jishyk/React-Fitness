@@ -83,6 +83,7 @@ const GoalEntry = () => {
                 <h2>Add Goal</h2>
                 <form onSubmit={handleFormSubmit}>
                     <h3>Exercise Goal</h3>
+                    <p>Add daily calorie burn goal </p>
                     <input
                         className="form-group"
                         placeholder="Add Exercise Goal"
@@ -96,6 +97,7 @@ const GoalEntry = () => {
                 <br />
                 <form onSubmit={handleFormSubmitNutrition}>
                     <h3>Nutrition Goal</h3>
+                    <p>Add daily calorie intake goal</p>
                     <input
                         className="form-group"
                         placeholder="Add Nutrition Goal"
