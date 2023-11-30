@@ -5,84 +5,96 @@ import { QUERY_EXERCISES } from '../utils/queries';
 import { QUERY_TODAYEXERCISES } from '../utils/queries';
 
 const styles = {
-    TempContainer: {
+    // TempContainer: {
+    //     display: 'flex',
+    //     flexDirection: 'column',
+    //     alignItems: 'center',
+    //     color: '#333',
+    //     height: '70%',
+    //     width: '70%',
+    //     marginLeft: 20,
+    //     marginBottom: 60,
+    //     fontSize: 14,
+    //     borderRadius: 8,
+    // },
+    // TempRecord: {
+    //     display: 'flex',
+    //     flexDirection: 'row',
+    //     alignItems: 'center',
+    //     justifyContent: 'flex-start',
+    //     background: '#3498db',
+    //     color: '#333',
+    //     height: '70%',
+    //     width: '100%',
+    //     marginLeft: 0,
+    //     marginTop: 4,
+    //     fontSize: 14,
+    //     textAlign: 'left',
+    //     border: '1px solid #000',
+    //     borderRadius: 8,
+    // },
+    entryBox: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        background: '#fff',
         color: '#333',
-        height: '70%',
-        width: '70%',
-        marginLeft: 20,
-        marginBottom: 60,
-        fontSize: 14,
-        borderRadius: 8,
-    },
-    TempRecord: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        background: '#3498db',
-        color: '#333',
-        height: '70%',
-        width: '100%',
-        marginLeft: 0,
-        marginTop: 4,
-        fontSize: 14,
+        width: '80%',
+        marginTop: 20,
+        marginBottom: 20,
+        padding: 20,
         textAlign: 'left',
         border: '1px solid #000',
         borderRadius: 8,
     },
     TempFieldSmall: {
-        height: '100%',
-        width: '12%',
+        // height: '100%',
+        width: '100%',
         fontSize: 14,
         textAlign: 'left',
-        marginLeft: 10,
-        marginRight: 10,
+        margin: '10px 0',
     },
     TempFieldLarge: {
-        height: '100%',
-        width: '18%',
+        // height: '100%',
+        width: '100%',
         fontSize: 14,
         textAlign: 'left',
-        marginLeft: 10,
-        marginRight: 10,
+        margin: '10px 0',
     },
     TempFieldNull: {
         height: '100%',
         width: 0,
     },
-    TempStatusContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        background: '#3498db',
-        color: '#333',
-        height: '70%',
-        width: '50%',
-        marginLeft: 70,
-        marginTop: 4,
-        fontSize: 14,
-        textAlign: 'left',
-        border: '1px solid #000',
-        borderRadius: 8,
-    },
-    TempStatusIndicator: {
-        background: '#008000',
-        color: '#ddd',
-        height: '70%',
-        width: '20%',
-        marginLeft: 20,
-        marginRight: 20,
-        marginTop: 4,
-        merginBottom: 40,
-        fontSize: 10,
-        textAlign: 'center',
-        border: '1px solid #000',
-        borderRadius: 28,
-    },
+    // TempStatusContainer: {
+    //     display: 'flex',
+    //     flexDirection: 'row',
+    //     alignItems: 'center',
+    //     justifyContent: 'space-around',
+    //     background: '#3498db',
+    //     color: '#333',
+    //     height: '70%',
+    //     width: '50%',
+    //     marginLeft: 70,
+    //     marginTop: 4,
+    //     fontSize: 14,
+    //     textAlign: 'left',
+    //     border: '1px solid #000',
+    //     borderRadius: 8,
+    // },
+    // TempStatusIndicator: {
+    //     background: '#008000',
+    //     color: '#ddd',
+    //     height: '70%',
+    //     width: '20%',
+    //     marginLeft: 20,
+    //     marginRight: 20,
+    //     marginTop: 4,
+    //     merginBottom: 40,
+    //     fontSize: 10,
+    //     textAlign: 'center',
+    //     border: '1px solid #000',
+    //     borderRadius: 28,
+    // },
 }
 
 const TodayExercise = ({ username, workoutGoal }) => {
@@ -121,29 +133,33 @@ const TodayExercise = ({ username, workoutGoal }) => {
 
 
     return (
-        <div>
+        <div className="entryBox">
             <h3>Exercises</h3>
             {!workoutGoal ? (<div style={styles.TempStatusContainer}>
-            <div>SET A GOAL TO TRACK YOUR PROGRESS</div>
-                </div>) : (
-            <div style={styles.TempStatusContainer}>
-                <div>STATUS</div>
-                {goalExerciseReached ? (
-                    <div style={styles.TempStatusIndicator}>SUCCESS</div>
-                ) : (
-                    <div style={styles.TempStatusIndicator}>FAIL</div>
-                )}
-                {goalExerciseReached ? (
-                    <div></div>
-                ) : (
-                    <div>Calories to go: {calToGo}</div>
-                )}
-                <div> Calories: {calBurnedTotal}/{workoutGoal}</div>
+                <div className="entryBox">
+                    <h3>SET A GOAL TO TRACK YOUR PROGRESS</h3>
+                </div>
+            </div>) : (
+                <div style={styles.TempStatusContainer}>
+                    <div className="entryBox">
+                        <h3>STATUS</h3>
+                    </div>
+                    {goalExerciseReached ? (
+                        <div className="TempStatusIndicator entryBox">SUCCESS</div>
+                    ) : (
+                        <div className="TempStatusIndicator entryBox">FAIL</div>
+                    )}
+                    {goalExerciseReached ? (
+                        <div></div>
+                    ) : (
+                        <div className="TempFieldSmall entryBox">Calories to go: {calToGo}</div>
+                    )}
+                    <div className="TempFieldSmall entryBox"> Calories: {calBurnedTotal}/{workoutGoal}</div>
                 </div>)}
             <div style={styles.TempContainer}>
                 {exercises &&
                     exercises.map((exercise) => (
-                        <div style={styles.TempRecord} key={exercise._id} className="card mb-3">
+                        <div style={styles.entryBox} key={exercise._id} className="entryBox card mb-3">
                             <div style={styles.TempFieldLarge}>{exercise.createdAt}</div>
                             <div style={styles.TempFieldSmall}>{exercise.name}</div>
                             <div style={styles.TempFieldSmall}>{exercise.workoutLength}</div>

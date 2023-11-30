@@ -5,84 +5,96 @@ import { QUERY_NUTRITIONS } from '../utils/queries';
 import { QUERY_TODAYNUTRITIONS } from '../utils/queries';
 
 const styles = {
-    TempContainer: {
+    // TempContainer: {
+    //     display: 'flex',
+    //     flexDirection: 'column',
+    //     alignItems: 'center',
+    //     color: '#333',
+    //     height: '70%',
+    //     width: '70%',
+    //     marginLeft: 20,
+    //     marginBottom: 60,
+    //     fontSize: 14,
+    //     borderRadius: 8,
+    // },
+    // TempRecord: {
+    //     display: 'flex',
+    //     flexDirection: 'row',
+    //     alignItems: 'center',
+    //     justifyContent: 'flex-start',
+    //     background: '#3498db',
+    //     color: '#333',
+    //     height: '70%',
+    //     width: '100%',
+    //     marginLeft: 0,
+    //     marginTop: 4,
+    //     fontSize: 14,
+    //     textAlign: 'left',
+    //     border: '1px solid #000',
+    //     borderRadius: 8,
+    // },
+    entryBox: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        background: '#fff',
         color: '#333',
-        height: '70%',
-        width: '70%',
-        marginLeft: 20,
-        marginBottom: 60,
-        fontSize: 14,
-        borderRadius: 8,
-    },
-    TempRecord: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        background: '#3498db',
-        color: '#333',
-        height: '70%',
-        width: '100%',
-        marginLeft: 0,
-        marginTop: 4,
-        fontSize: 14,
+        width: '80%',
+        marginTop: 20,
+        marginBottom: 20,
+        padding: 20,
         textAlign: 'left',
         border: '1px solid #000',
         borderRadius: 8,
     },
     TempFieldSmall: {
-        height: '100%',
-        width: '12%',
+        // height: '100%',
+        width: '100%',
         fontSize: 14,
         textAlign: 'left',
-        marginLeft: 10,
-        marginRight: 10,
+        margin: '10px 0',
     },
     TempFieldLarge: {
-        height: '100%',
-        width: '18%',
+        // height: '100%',
+        width: '100%',
         fontSize: 14,
         textAlign: 'left',
-        marginLeft: 10,
-        marginRight: 10,
+        margin: '10px 0',
     },
     TempFieldNull: {
         height: '100%',
         width: 0,
     },
-    TempStatusContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        background: '#3498db',
-        color: '#333',
-        height: '70%',
-        width: '50%',
-        marginLeft: 70,
-        marginTop: 4,
-        fontSize: 14,
-        textAlign: 'left',
-        border: '1px solid #000',
-        borderRadius: 8,
-    },
-    TempStatusIndicator: {
-        background: '#008000',
-        color: '#ddd',
-        height: '70%',
-        width: '20%',
-        marginLeft: 20,
-        marginRight: 20,
-        marginTop: 4,
-        merginBottom: 40,
-        fontSize: 10,
-        textAlign: 'center',
-        border: '1px solid #000',
-        borderRadius: 28,
-    },
+    // TempStatusContainer: {
+    //     display: 'flex',
+    //     flexDirection: 'row',
+    //     alignItems: 'center',
+    //     justifyContent: 'space-around',
+    //     background: '#3498db',
+    //     color: '#333',
+    //     height: '70%',
+    //     width: '50%',
+    //     marginLeft: 70,
+    //     marginTop: 4,
+    //     fontSize: 14,
+    //     textAlign: 'left',
+    //     border: '1px solid #000',
+    //     borderRadius: 8,
+    // },
+    // TempStatusIndicator: {
+    //     background: '#008000',
+    //     color: '#ddd',
+    //     height: '70%',
+    //     width: '20%',
+    //     marginLeft: 20,
+    //     marginRight: 20,
+    //     marginTop: 4,
+    //     merginBottom: 40,
+    //     fontSize: 10,
+    //     textAlign: 'center',
+    //     border: '1px solid #000',
+    //     borderRadius: 28,
+    // },
 }
 
 const TodayNutrition = ({ username, nutritionGoal }) => {
@@ -92,7 +104,7 @@ const TodayNutrition = ({ username, nutritionGoal }) => {
 
     useEffect(() => {
         refetch();
-      }, []);
+    }, []);
 
     if (loading) {
         return <h3>Loading...</h3>;
@@ -119,29 +131,29 @@ const TodayNutrition = ({ username, nutritionGoal }) => {
     console.log(nutritionGoal);
     console.log(goalCaloriesReached);
     return (
-        <div>
+        <div className="entryBox">
             <h3>Nutritions</h3>
-            {!nutritionGoal ? (<div style={styles.TempStatusContainer}>
-            <div>SET A GOAL TO TRACK YOUR PROGRESS</div>
-                </div>) : (
-            <div style={styles.TempStatusContainer}>
-            <div>STATUS</div>
-                {goalCaloriesReached ? (
-                    <div style={styles.TempStatusIndicator}>SUCCESS</div>
-                ) : (
-                    <div style={styles.TempStatusIndicator}>FAIL</div>
-                )}
-                {goalCaloriesReached ? (
-                    <div></div>
-                ) : (
-                    <div>Calories over: {caloriesLeft}</div>
-                )}
-                <div> Calories: {calConsumedTotal}/{nutritionGoal}</div>
+            {!nutritionGoal ? (<div className="entryBox">
+                <h3>SET A GOAL TO TRACK YOUR PROGRESS</h3>
+            </div>) : (
+                <div className="entryBox">
+                    <h3>STATUS</h3>
+                    {goalCaloriesReached ? (
+                        <div className="TempStatusIndicator entryBox">SUCCESS</div>
+                    ) : (
+                        <div className="TempStatusIndicator">FAIL</div>
+                    )}
+                    {goalCaloriesReached ? (
+                        <div></div>
+                    ) : (
+                        <div className="TempFieldSmall entryBox">Calories over: {caloriesLeft}</div>
+                    )}
+                    <div className="TempFieldSmall entryBox"> Calories: {calConsumedTotal}/{nutritionGoal}</div>
                 </div>)}
             <div style={styles.TempContainer}>
                 {nutritions &&
                     nutritions.map((nutrition) => (
-                        <div style={styles.TempRecord} key={nutrition._id} className="card mb-3">
+                        <div style={styles.entryBox} key={nutrition._id} className="entryBox card mb-3">
                             <div style={styles.TempFieldLarge}>{nutrition.createdAt}</div>
                             <div style={styles.TempFieldSmall}>{nutrition.name}</div>
                             <div style={styles.TempFieldSmall}>{nutrition.calories}</div>
