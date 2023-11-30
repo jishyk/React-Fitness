@@ -20,6 +20,7 @@ import AuthService from '../utils/auth';
 import TodayExercise from "../components/TodayExcercise";
 import TodayNutrition from "../components/TodayNutrition";
 import { Link } from 'react-router-dom';
+import Nav from '../components/Nav';
 const Dashboard = () => {
     const { loading, error, data } = useQuery(QUERY_ME);
     const [displayExercises, setDisplayExercises] = useState(false);
@@ -67,6 +68,9 @@ const Dashboard = () => {
             {AuthService.loggedIn() ? (
                 <div>
                     <div className='dashHeader'>
+                        {/* <span className='hamburgerNav'> */}
+                        <Nav />
+                        {/* </span> */}
                         <h1>Welcome, {username}</h1>
                         <button className="btn btn-lg btn-light m-2" onClick={logout}>
                             Logout

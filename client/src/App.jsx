@@ -44,7 +44,7 @@ function App() {
       <div className="flex-column justify-flex-start min-100-vh">
         {/* can add once header is created, or different component. -abel */}
         {/* <Header /> */}
-        <AddNav />
+        {/* <AddNav /> */}
         <div className="container">
           <Outlet />
         </div>

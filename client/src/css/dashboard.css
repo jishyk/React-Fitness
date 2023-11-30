@@ -4,18 +4,20 @@
     align-items: center;
     padding: 20px;
     min-height: 100vh;
-    background-image: url('../assets/Dashboard.jpeg'); /* Add a background image */
+    background-image: url('../assets/Dashboard.jpeg');
+    /* Add a background image */
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
 }
+
 /* Dashboard Header */
 .dashHeader {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(255, 255, 255, 0.358);
+    /* background-color: rgba(255, 255, 255, 0.8); */
     padding: 15px 30px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -26,6 +28,8 @@
     justify-content: space-between;
     /* align-items: center; */
     margin-top: 15px;
+    background-color: #333;
+    opacity: 0.85;
 }
 
 .dashHeader h1 {
@@ -36,40 +40,47 @@
 
 /* Button Styles */
 .btn {
-    background-color: #28a745; 
-    color: white; 
-    border: none; 
-    padding: 12px 25px; 
-    white-space: nowrap;    
-    border-radius: 30px; 
-    font-size: 1rem; 
-    cursor: pointer; 
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    white-space: nowrap;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16); 
-    font-weight: bold; 
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    font-weight: bold;
     margin: 10px, 0;
 }
 
 .btn:hover {
-    background-color: #218838; 
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
+    background-color: #218838;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
 }
 
 
 /* Dashboard Summary */
 .dashSummary {
-    background-color: rgba(255, 255, 255, 0.85);
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    background-color: #333;
+    opacity: 0.85;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
     width: 100%;
     max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
 }
 
-.dashSummary > div {
-    margin-bottom: 20px; /* Adds more space between the button sections */
+.dashSummary>div {
+    margin-bottom: 20px;
+    /* Adds more space between the button sections */
 }
 
 .dashSummary h2 {
@@ -78,51 +89,95 @@
 }
 
 /* Content Styles for Exercise and Nutrition */
-.TodayExercise, .TodayNutrition {
+.TodayExercise,
+.TodayNutrition {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
     margin-top: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 1.1rem;
-    position: relative; /* For positioning the title boxes */
+    position: relative;
+    /* For positioning the title boxes */
 }
 
 /* Title Box for Exercise and Nutrition */
-.TodayExercise::before, .TodayNutrition::before {
-    content: attr(data-title); /* Uses the data-title attribute for content */
-    background-color: #007bff; /* A distinct color for the title box */
+.TodayExercise::before,
+.TodayNutrition::before {
+    content: attr(data-title);
+    /* Uses the data-title attribute for content */
+    background-color: #007bff;
+    /* A distinct color for the title box */
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
     position: absolute;
-    top: -15px; /* Positions the title box above the container */
+    top: -15px;
+    /* Positions the title box above the container */
     left: 20px;
     font-weight: bold;
 }
 
 /* Separate Sections with a Bar Line */
-.TodayExercise + .TodayNutrition {
+.TodayExercise+.TodayNutrition {
     border-top: 2px solid #007bff;
-    margin-top: 25px; 
+    margin-top: 25px;
 }
 
 /* Adjusting the margin to incorporate the title box */
-.TodayExercise, .TodayNutrition {
-    margin-top: 35px; 
+.TodayExercise,
+.TodayNutrition {
+    margin-top: 35px;
+}
+
+.hamburgerNav {
+    position: relative;
+    left: 25px;
+    top: 3px;
 }
 
 
 /* Responsive Design */
 @media (max-width: 962px) {
-    .dashHeader, .dashSummary {
+
+    .dashHeader,
+    .dashSummary {
         flex-direction: column;
         align-items: center;
         width: auto;
         position: relative;
     }
 
+    .dropdownMenu {
+        display: inline-block;
+        cursor: pointer;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        top: auto;
+        padding-left: 23px;
+        padding-bottom: 24px;
+    }
+    .dropDownContent {
+        /* left: -117px; */
+        /* top: 58px; */
+        left: 0;
+        top: 100%;
+        text-wrap: wrap;
+        overflow: scroll;
+        height: 80%;
+        font-size: 0.8rem;
+    }
+
     .btn {
         margin-top: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hamburgerNav {
+        position: absolute;
+        top: 103px;
+        left: 70px;
     }
 }

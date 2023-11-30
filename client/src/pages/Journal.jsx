@@ -62,11 +62,12 @@ const styles = {
 }
 
 const Journal = () => {
-    const { loading, data, error } = useQuery(QUERY_ME);
+    const { loading, data, error, refetch } = useQuery(QUERY_ME);
 
     useEffect(() => {
-        console.log(data);
-    }, [data]);
+        // console.log(data);
+        refetch();
+    }, []);
 
     if (loading) {
         return <h3>Loading...</h3>;
@@ -74,9 +75,9 @@ const Journal = () => {
     const user = data && data.me;
     const exercises = user.exercises || [];
 
-    if (!exercises.length) {
-        return <h3>You have nothing in your journal. Get started on your fitness journey by adding a nutrition or an exercise.</h3>
-    }
+    // if (!exercises.length) {
+    //     return <h3>You have nothing in your journal. Get started on your fitness journey by adding a nutrition or an exercise.</h3>
+    // }
     console.log(exercises);
     // const workoutEmoji = 127947;
     // const nutritionEmoji = '&#x1f3cb';
@@ -86,7 +87,13 @@ const Journal = () => {
         <div className="journalContainer">
             <h3 className="journalBox">Journal</h3>
             <Link to="/dashboard" className="back-to-dashboard-button">Back to Dashboard</Link>
-            <div style={styles.journalBox}>
+            {exercises.length === 0 ? (
+                <div className="noJournalBox">
+                <h3 className='noJournal'>You have nothing in your journal. Get started on your fitness journey by adding a nutrition or an exercise.</h3>
+                </div>
+            ) : (
+            // <div style={styles.journalBox}>
+            <div className="journalBox">    
                 {last10Exercises.map((exercise) => (
                     <div key={exercise._id} style={styles.journalBox} className="journalBox card mb-3">
                         <div style={styles.TypeFieldLarge}>{exercise.createdAt}</div>
@@ -97,8 +104,9 @@ const Journal = () => {
                         <div style={styles.TempFieldSmall}>Calories Burned: {exercise.feeling}</div>
                     </div>
 
-                ))}
+                ))}   
             </div>
+            )}
             <div className="form-group">
             </div>
         </div>
