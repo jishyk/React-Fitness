@@ -101,7 +101,7 @@ const Journal = () => {
                         <div style={styles.TempFieldSmall}>Exercise: {exercise.exercise}</div>
                         <div style={styles.TempFieldSmall}>Workout Length: {exercise.workoutLength}</div>
                         <div style={styles.TempFieldSmall}>Calories Burned: {exercise.caloriesBurned}</div>
-                        <div style={styles.TempFieldSmall}>Calories Burned: {exercise.feeling}</div>
+                        <div style={styles.TempFieldSmall}>Feeling: {exercise.feeling}</div>
                     </div>
 
                 ))}   
