@@ -65,22 +65,22 @@ const styles = {
         height: '100%',
         width: 0,
     },
-    // TempStatusContainer: {
-    //     display: 'flex',
-    //     flexDirection: 'row',
-    //     alignItems: 'center',
-    //     justifyContent: 'space-around',
-    //     background: '#3498db',
-    //     color: '#333',
-    //     height: '70%',
-    //     width: '50%',
-    //     marginLeft: 70,
-    //     marginTop: 4,
-    //     fontSize: 14,
-    //     textAlign: 'left',
-    //     border: '1px solid #000',
-    //     borderRadius: 8,
-    // },
+    TempStatusContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        // background: '#3498db',
+        // color: '#333',
+        // height: '70%',
+        // width: '50%',
+        // marginLeft: 20,
+        marginTop: 20,
+        // fontSize: 14,
+        // textAlign: 'left',
+        // border: '1px solid #000',
+        // borderRadius: 8,
+    },
     // TempStatusIndicator: {
     //     background: '#008000',
     //     color: '#ddd',
@@ -113,7 +113,7 @@ const TodayExercise = ({ username, workoutGoal }) => {
     const exercises = data?.todayExercises || [];
 
     if (!exercises.length) {
-        return <h3>You have no exercises logged yet for today. Add an exercise to get started!</h3>
+        return <div style={styles.TempStatusContainer}><h3>You have no exercises logged yet for today. Add an exercise to get started!</h3></div>
     }
     console.log(exercises);
     let calBurnedTotal = 0;
@@ -134,7 +134,7 @@ const TodayExercise = ({ username, workoutGoal }) => {
 
     return (
         <div className="entryBox">
-            <h3>Exercises</h3>
+            {/* <h3>Exercises</h3> */}
             {!workoutGoal ? (<div style={styles.TempStatusContainer}>
                 <div className="entryBox">
                     <h3>SET A GOAL TO TRACK YOUR PROGRESS</h3>
@@ -142,7 +142,7 @@ const TodayExercise = ({ username, workoutGoal }) => {
             </div>) : (
                 <div style={styles.TempStatusContainer}>
                     <div className="entryBox">
-                        <h3>STATUS</h3>
+                        {/* <h3>STATUS</h3> */}
                     </div>
                     {goalExerciseReached ? (
                         <div className="TempStatusIndicator entryBox">SUCCESS</div>
