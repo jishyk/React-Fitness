@@ -95,3 +95,9 @@
     color: #9c2121;
     text-decoration: underline;
 }
+
+@media(max-width: 962px) {
+    .navBarNutrition {
+        display: none;
+    }
+}

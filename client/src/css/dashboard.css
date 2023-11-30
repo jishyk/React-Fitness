@@ -164,21 +164,13 @@
         /* top: 58px; */
         left: 0;
         top: 100%;
-        text-wrap: wrap;
-        overflow: scroll;
+        white-space: normal;
+        overflow-y: scroll;
         height: 80%;
         font-size: 0.8rem;
-    }
 
+    }
     .btn {
         margin-top: 10px;
-    }
-}
-
-@media (max-width: 380px) {
-    .hamburgerNav {
-        position: absolute;
-        top: 103px;
-        left: 70px;
     }
 }
