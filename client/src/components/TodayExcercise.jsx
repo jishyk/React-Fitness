@@ -145,9 +145,9 @@ const TodayExercise = ({ username, workoutGoal }) => {
                         {/* <h3>STATUS</h3> */}
                     </div>
                     {goalExerciseReached ? (
-                        <div className="TempStatusIndicator entryBox">SUCCESS</div>
-                    ) : (
-                        <div className="TempStatusIndicator entryBox">FAIL</div>
+                        <div className="TempStatusIndicator success entryBox">SUCCESS</div>
+                        ) : (
+                            <div className="TempStatusIndicator fail entryBox">FAIL</div>
                     )}
                     {goalExerciseReached ? (
                         <div></div>
@@ -160,12 +160,13 @@ const TodayExercise = ({ username, workoutGoal }) => {
                 {exercises &&
                     exercises.map((exercise) => (
                         <div style={styles.entryBox} key={exercise._id} className="entryBox card mb-3">
-                            <div style={styles.TempFieldLarge}>{exercise.createdAt}</div>
-                            <div style={styles.TempFieldSmall}>{exercise.name}</div>
-                            <div style={styles.TempFieldSmall}>{exercise.workoutLength}</div>
-                            <div style={styles.TempFieldSmall}>{exercise.caloriesBurned}</div>
-                            <div style={styles.TempFieldSmall}>{exercise.feeling}</div>
-                        </div>
+                         <div style={styles.TempFieldLarge}>{exercise.createdAt}</div>
+                        <h3 style={styles.TempFieldLarge}>Workout Name: <span>{exercise.name}</span></h3>
+                        <p style={styles.TempFieldSmall}>Workout Length: <span>{exercise.workoutLength} minutes</span></p>
+                        <p style={styles.TempFieldSmall}>Calories Burned: <span>{exercise.caloriesBurned}</span></p>
+                        <p style={styles.TempFieldSmall}>Feeling: <span>{exercise.feeling}</span></p>
+                        
+                    </div>
                     ))}
             </div>
         </div>
