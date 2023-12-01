@@ -19,6 +19,8 @@ const CreateAccount = () => {
     // define a useMutation hook for executing the ADD_USER mutation
     const [addUser, { error, data }] = useMutation(ADD_USER);
 
+    const [validationError, setValidationError] = useState('');
+
     // define a function to destructure the target element name and value from the event.target object and update the formState object accordingly.
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -27,6 +29,8 @@ const CreateAccount = () => {
             ...formState,
             [name]: value,
         });
+
+        setValidationError('');
     };
 
     // define an asnyc function to execute the mutation using the destructured formState object fields as arguments. Use the token in the returned data object as the argument in the Auth.login function, which stores the token to local storage and redirects the user to the home page.  
@@ -47,8 +51,22 @@ const CreateAccount = () => {
 
             Auth.login(data.addUser.token);
         } catch (e) {
+            if (e.message.includes('username')) {
+                setValidationError('Username already taken!');
+            } else if (e.message.includes('email')) {
+                setValidationError('Email already exists!');
+            }
             console.error(e);
         }
+    };
+
+    const styles = {
+        errorMessage: {
+            color: 'black',
+            marginTop: 20,
+            fontSize: 20,
+            fontWeight: 'bold',
+        },
     };
 
     return (
@@ -76,7 +94,7 @@ const CreateAccount = () => {
                     className="form-group"
                     placeholder="Your password"
                     name="password"
-                    type="text"
+                    type="password"
                     value={formState.password}
                     onChange={handleChange}
                     />
@@ -87,6 +105,11 @@ const CreateAccount = () => {
                         Create Account
                     </button>
                 </form>
+                {error && (
+                    <div className='errorMessage' style={styles.errorMessage}>
+                        {validationError}
+                    </div>
+                )}
                 <div className="form-group">
                     <Link to="/" className="signup-button">Back to Home</Link>
                 </div>
