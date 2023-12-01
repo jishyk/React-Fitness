@@ -36,7 +36,7 @@ const styles = {
     entryBox: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
+        // alignItems: 'center',
         background: '#fff',
         color: '#333',
         width: '80%',
@@ -81,6 +81,10 @@ const styles = {
         // border: '1px solid #000',
         // borderRadius: 8,
     },
+    h3: {
+        fontSize: 15,
+        marginBottom: 5
+    }
     // TempStatusIndicator: {
     //     background: '#008000',
     //     color: '#ddd',
@@ -159,8 +163,8 @@ const TodayNutrition = ({ username, nutritionGoal }) => {
                     nutritions.map((nutrition) => (
                         <div style={styles.entryBox} key={nutrition._id} className="entryBox card mb-3">
                         <div style={styles.TempFieldLarge}>{nutrition.createdAt}</div>
-                        <h3>Meal Name: <span>{nutrition.name}</span></h3>
-                        <p>Calories: <span>{nutrition.calories}</span></p>
+                        <h3 style={styles.h3}>Meal Name: <span>{nutrition.name}</span></h3>
+                        <p style={styles.h3}>Calories: <span>{nutrition.calories}</span></p>
                         </div>
                     ))}
             </div>
