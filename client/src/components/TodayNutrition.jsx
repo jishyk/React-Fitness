@@ -158,9 +158,9 @@ const TodayNutrition = ({ username, nutritionGoal }) => {
                 {nutritions &&
                     nutritions.map((nutrition) => (
                         <div style={styles.entryBox} key={nutrition._id} className="entryBox card mb-3">
+                        <div style={styles.TempFieldLarge}>{nutrition.createdAt}</div>
                         <h3>Meal Name: <span>{nutrition.name}</span></h3>
                         <p>Calories: <span>{nutrition.calories}</span></p>
-                        <div style={styles.TempFieldLarge}>{nutrition.createdAt}</div>
                         </div>
                     ))}
             </div>
