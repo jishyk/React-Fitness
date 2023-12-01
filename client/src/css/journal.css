@@ -100,7 +100,7 @@
     margin-top: 20px;
     color: #fff;
     font-size: 1.1em;
-    text-decoration: none;
+    /* text-decoration: underline; */
     transition: color 0.3s;
 }
 
@@ -117,7 +117,10 @@
 }
 
 .noJournalBox {
-    background: rgba(255, 255, 255, 0.27);
+    /* background: rgba(255, 255, 255, 0.27); */
+    background-color: #333;
+    opacity: 0.85;
+    color:#fff;
     margin-top: 20px;
     padding: 20px;
     border-radius: 15px;
