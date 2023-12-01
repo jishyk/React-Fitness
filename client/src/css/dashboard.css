@@ -11,6 +11,7 @@
     background-repeat: no-repeat;
 }
 
+
 /* Dashboard Header */
 .dashHeader {
     position: absolute;
@@ -137,7 +138,35 @@
     top: 3px;
 }
 
+.entryBox
+{
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    
+    /* For positioning the title boxes */
+}
 
+.TempFieldSmall {
+    background-color: #044c93; /* Light background for the field */
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    width: 25%;
+  }
+
+  .TempStatusIndicator.success {
+    background-color: #28a745;
+    padding: 10px;
+  }
+  /* Red color for fail status */
+.TempStatusIndicator.fail {
+    background-color: #dc3545;
+    padding: 10px;
+  }
+  
 /* Responsive Design */
 @media (max-width: 962px) {
 
@@ -164,13 +193,21 @@
         /* top: 58px; */
         left: 0;
         top: 100%;
-        white-space: normal;
-        overflow-y: scroll;
+        text-wrap: wrap;
+        overflow: scroll;
         height: 80%;
         font-size: 0.8rem;
-
     }
+
     .btn {
         margin-top: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hamburgerNav {
+        position: absolute;
+        top: 103px;
+        left: 70px;
     }
 }

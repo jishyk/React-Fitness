@@ -139,13 +139,13 @@ const TodayNutrition = ({ username, nutritionGoal }) => {
             </div>
             </div>) : (
                 <div style={styles.TempStatusContainer}>
-                <div className="entryBox">
+                <div>
                     {/* <h3>STATUS</h3> */}
                     </div>
                     {goalCaloriesReached ? (
-                        <div className="TempStatusIndicator entryBox">SUCCESS</div>
-                    ) : (
-                        <div className="TempStatusIndicator">FAIL</div>
+                        <div className="TempStatusIndicator success entryBox">SUCCESS</div>
+                        ) : (
+                            <div className="TempStatusIndicator fail entryBox">FAIL</div>
                     )}
                     {goalCaloriesReached ? (
                         <div></div>
@@ -158,9 +158,9 @@ const TodayNutrition = ({ username, nutritionGoal }) => {
                 {nutritions &&
                     nutritions.map((nutrition) => (
                         <div style={styles.entryBox} key={nutrition._id} className="entryBox card mb-3">
-                            <div style={styles.TempFieldLarge}>{nutrition.createdAt}</div>
-                            <div style={styles.TempFieldSmall}>{nutrition.name}</div>
-                            <div style={styles.TempFieldSmall}>{nutrition.calories}</div>
+                        <h3>Meal Name: <span>{nutrition.name}</span></h3>
+                        <p>Calories: <span>{nutrition.calories}</span></p>
+                        <div style={styles.TempFieldLarge}>{nutrition.createdAt}</div>
                         </div>
                     ))}
             </div>
